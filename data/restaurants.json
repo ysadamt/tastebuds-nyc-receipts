@@ -1,0 +1,190 @@
+[
+  {
+    "id": 1,
+    "restaurant_name": "Little Armenia Cafe",
+    "country": "Armenia",
+    "country_code": "AM",
+    "beverages": ["Keush sparkling Armenian wine", "Sparkling red wine"],
+    "appetizers": ["Tabouli salad", "Butternut squash soup", "Spinach pie"],
+    "mains": ["Mediterranean lamb burger", "Armenian plate"],
+    "desserts": ["Baklava"]
+  },
+  {
+    "id": 2,
+    "restaurant_name": "Budapest cafe",
+    "country": "Hungary",
+    "country_code": "HU",
+    "beverages": ["Egri Bikaver Bull's Blood"],
+    "appetizers": ["Téliszalámi w/ Bread"],
+    "mains": ["Beef Goulash w/ Nokedli", "Chicken Paprikas w/ Nokedli"],
+    "desserts": [
+      "Poppy seed strudel",
+      "Palacsinta (Hungarian crepes) apricot jam, with nuts"
+    ]
+  },
+  {
+    "id": 3,
+    "restaurant_name": "Ihawan",
+    "country": "Philippines",
+    "country_code": "PH",
+    "beverages": ["Fresh cantaloupe", "Pa"],
+    "appetizers": [],
+    "mains": [
+      "Daing Na Bangus (fried milkfish)",
+      "Lumpiang Shanghai",
+      "Pinakbet",
+      "Siling Labuyo",
+      "BBQ chicken"
+    ],
+    "desserts": ["Jackfruit Turon"]
+  },
+  {
+    "id": 4,
+    "restaurant_name": "Arepas Cafe",
+    "country": "Venezuela",
+    "country_code": "VE",
+    "beverages": ["Polar Pilsner Beer", "Ponche Crema"],
+    "appetizers": ["Empanadas de carne", "Yucca fries", "tequeno"],
+    "mains": [
+      "Hallaca (traditional holiday dish)",
+      "Pan de jamon",
+      "Arepa Pabellon"
+    ],
+    "desserts": ["Cachapa"]
+  },
+  {
+    "id": 5,
+    "restaurant_name": "Ssam Tong BBQ",
+    "country": "South Korea",
+    "country_code": "KR",
+    "beverages": ["Peach soju", "Grape soju"],
+    "appetizers": [
+      "Haemil Pajeon (seafood pancake)",
+      "Japchae (glass noodles)"
+    ],
+    "mains": ["Pork belly", "Galbi (Marinated short ribs)", "Ribeye"],
+    "desserts": ["Music Box Karaoke"]
+  },
+  {
+    "id": 6,
+    "restaurant_name": "Çka Ka Qëllu",
+    "country": "Albania",
+    "country_code": "AL",
+    "beverages": ["Stone Castle Cabernet Sauvignon", "Albanian Turkish Coffee"],
+    "appetizers": ["Bread", "Sausage dip", "Tarator"],
+    "mains": ["Leçenik", "Skenderbeg", "Tava Kosi"],
+    "desserts": ["Baklava"]
+  },
+  {
+    "id": 7,
+    "restaurant_name": "The Weekender",
+    "country": "Bhutan",
+    "country_code": "BT",
+    "beverages": ["Suja Butter Tea", "Rice wine"],
+    "appetizers": [],
+    "mains": [
+      "Momo",
+      "Shamu Datsi (mushrooms)",
+      "Sikam Paa",
+      "Shaka Datsi",
+      "Red rice"
+    ],
+    "desserts": []
+  },
+  {
+    "id": 8,
+    "restaurant_name": "Karavan Kebab",
+    "country": "Tajikistan",
+    "country_code": "TJ",
+    "beverages": ["Turkish Tea"],
+    "appetizers": ["Karavan Salad", "Pumpkin Pie Sambusa"],
+    "mains": ["Qurutob", "Manti", "Beef kebab"],
+    "desserts": []
+  },
+  {
+    "id": 9,
+    "restaurant_name": "I Love Paraguay",
+    "country": "Paraguay",
+    "country_code": "PY",
+    "beverages": ["Guarani Pilsner Beer"],
+    "appetizers": ["Mbeju", "Yuca Fries", "Chipa So'o", "Croquetas de Carne"],
+    "mains": ["Cheesy rice", "Lomito", "Milanesa de Carne"],
+    "desserts": ["Paraguayan Tres Leches"]
+  },
+  {
+    "id": 10,
+    "restaurant_name": "Dar Lbahja",
+    "country": "Morocco",
+    "country_code": "MA",
+    "beverages": ["Moroccan Tea"],
+    "appetizers": ["Kofta Cigars"],
+    "mains": ["Chicken Bastilla", "Chicken Tagine", "Lamb Tagine"],
+    "desserts": ["Moroccan Cookies"]
+  },
+  {
+    "id": 11,
+    "restaurant_name": "Awang Kitchen",
+    "country": "Indonesia",
+    "country_code": "ID",
+    "beverages": ["Happy Soda"],
+    "appetizers": ["Pempek", "Tempeh Mendoan"],
+    "mains": ["Tongseng Kambing", "Nasi Bungkus Padang"],
+    "desserts": ["Es Doger"]
+  },
+  {
+    "id": 12,
+    "restaurant_name": "Safari",
+    "country": "Somalia",
+    "country_code": "SO",
+    "beverages": ["Fiimto (Vimto)", "Somali Chai"],
+    "appetizers": ["Beef Sambusa"],
+    "mains": ["Hilib Ari", "Mango Chicken Curry"],
+    "desserts": ["Malab"]
+  },
+  {
+    "id": 13,
+    "restaurant_name": "Ariana Afghan Kebab",
+    "country": "Afghanistan",
+    "country_code": "AF",
+    "beverages": ["Homemade iced tea", "Hot tea"],
+    "appetizers": ["Sambusa", "Mantu"],
+    "mains": ["Lamb platter", "Beef platter"],
+    "desserts": ["Firnee"]
+  },
+  {
+    "id": 14,
+    "restaurant_name": "Beija Flor",
+    "country": "Brazil",
+    "country_code": "BR",
+    "beverages": ["Caipirinhas"],
+    "appetizers": ["Pão de queijo", "Salgadinhos"],
+    "mains": ["Picanha Na Chapa", "Moqueca De Peixe", "Feijoada"],
+    "desserts": ["Brigadeiro Caseiro"]
+  },
+  {
+    "id": 15,
+    "restaurant_name": "Laila Bayridge",
+    "country": "Syria",
+    "country_code": "SY",
+    "beverages": [],
+    "appetizers": ["Fattoush", "Muhammara", "Baba Ghanouj", "Grape Leaves"],
+    "mains": ["Fattet Mosat", "Kibbeh Labanieh"],
+    "desserts": ["Kunefe"]
+  },
+  {
+    "id": 16,
+    "restaurant_name": "Martine's Bistro",
+    "country": "Haiti",
+    "country_code": "HT",
+    "beverages": ["Couronne Cola"],
+    "appetizers": [],
+    "mains": [
+      "Fritay",
+      "Boulèt (Haitian Meatballs)",
+      "Griot (fried pork)",
+      "Macaroni Pie",
+      "Fish Fillet"
+    ],
+    "desserts": []
+  }
+]
