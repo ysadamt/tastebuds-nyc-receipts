@@ -6,6 +6,7 @@ import { fakeReceipt } from "./utils/fonts";
 import restaurantsData from "../data/restaurants.json";
 import { Nanum_Pen_Script, Zalando_Sans } from "next/font/google";
 import gsap from "gsap";
+import { GlobeIcon, InstagramLogoIcon, TiktokLogoIcon } from "@phosphor-icons/react";
 
 const nanumPenScript = Nanum_Pen_Script({ weight: "400" });
 const zalandoSans = Zalando_Sans({ weight: ["400", "700"] });
@@ -71,6 +72,7 @@ export default function Home() {
   const globeWrapperRef = useRef<HTMLDivElement>(null);
   const receiptAreaRef = useRef<HTMLDivElement>(null);
   const receiptCardRef = useRef<HTMLDivElement>(null);
+  const postItRef = useRef<HTMLDivElement>(null);
 
   const [selected, setSelected] = useState<Restaurant | null>(null);
   const animatingRef = useRef(false);
@@ -140,6 +142,16 @@ export default function Home() {
       { opacity: 1, x: 0, duration: 0.25, stagger: 0.03, ease: "power1.out" },
       "-=0.3"
     );
+
+    // Post-it slaps on after receipt prints
+    if (postItRef.current) {
+      tl.fromTo(
+        postItRef.current,
+        { scale: 0, opacity: 0, rotate: -20 },
+        { scale: 1, opacity: 1, rotate: 3, duration: 0.4, ease: "back.out(2.5)" },
+        "-=0.1"
+      );
+    }
   }, []);
 
   const handleStickerClick = useCallback(
@@ -149,16 +161,9 @@ export default function Home() {
 
       // If a receipt is already showing, animate it out first
       if (selected && receiptCardRef.current) {
-        gsap.to(receiptCardRef.current, {
-          clipPath: "inset(0 0 100% 0)",
-          y: -10,
-          rotate: 0,
-          opacity: 0,
-          duration: 0.35,
-          ease: "power2.in",
+        const outTl = gsap.timeline({
           onComplete: () => {
             setSelected(r);
-            // Wait for React to render the new receipt, then animate in
             requestAnimationFrame(() => {
               requestAnimationFrame(() => {
                 animateReceiptIn();
@@ -166,6 +171,21 @@ export default function Home() {
             });
           },
         });
+        // Post-it flies off first
+        if (postItRef.current) {
+          outTl.to(postItRef.current, {
+            scale: 0, opacity: 0, rotate: -15, duration: 0.2, ease: "power2.in",
+          });
+        }
+        // Then receipt slides up
+        outTl.to(receiptCardRef.current, {
+          clipPath: "inset(0 0 100% 0)",
+          y: -10,
+          rotate: 0,
+          opacity: 0,
+          duration: 0.35,
+          ease: "power2.in",
+        }, postItRef.current ? "-=0.1" : "0");
       } else {
         setSelected(r);
         requestAnimationFrame(() => {
@@ -350,120 +370,171 @@ export default function Home() {
         {/* Receipt */}
         <div ref={receiptAreaRef} className="flex flex-col items-center">
           {selected && (
-            <div
-              ref={receiptCardRef}
-              className="w-[300px] flex flex-col items-center"
-              style={{ clipPath: "inset(0 0 100% 0)", opacity: 0 }}
-            >
-              {/* Paper body */}
+            <div className="relative">
               <div
-                className={`w-full px-5 pt-4 pb-6 bg-[#fffef8] shadow-[0_1px_4px_rgba(0,0,0,0.08)] ${fakeReceipt.className}`}
+                ref={receiptCardRef}
+                className="w-[300px] flex flex-col items-center"
+                style={{ clipPath: "inset(0 0 100% 0)", opacity: 0 }}
               >
-                <p
-                  data-receipt-line
-                  className="text-center text-lg text-black font-bold tracking-wide"
+                {/* Paper body */}
+                <div
+                  className={`w-full px-5 pt-4 pb-6 bg-[#fffef8] shadow-[0_1px_4px_rgba(0,0,0,0.08)] ${fakeReceipt.className}`}
                 >
-                  {selected.restaurant_name.toUpperCase()}
-                </p>
-                <p
-                  data-receipt-line
-                  className="text-center my-1.5 text-sm leading-[1.4] text-[#555]"
-                >
-                  {getFlagEmoji(selected.country_code)}{" "}
-                  {selected.country.toUpperCase()}
-                </p>
-                <a
-                  data-receipt-line
-                  className="text-[0.65rem] leading-[1.4] text-[#777] underline hover:text-blue-500 transition-colors duration-200"
-                  href={`https://maps.google.com/?q=${selected.address}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <p className="text-center">
-                    {selected.address}
+                  <p
+                    data-receipt-line
+                    className="text-center text-lg text-black font-bold tracking-wide"
+                  >
+                    {selected.restaurant_name.toUpperCase()}
                   </p>
-                </a>
-
-                <p
-                  data-receipt-line
-                  className="text-center text-[0.7rem] my-2 text-[#999]"
-                >
-                  - - - - - - - - - - - - - - - - -
-                </p>
-
-                <p
-                  data-receipt-line
-                  className="text-[0.7rem] my-px leading-[1.4] text-[#555]"
-                >
-                  ORDER #{String(selected.id).padStart(4, "0")}
-                </p>
-
-                <p
-                  data-receipt-line
-                  className="text-center text-[0.7rem] my-2 text-[#999]"
-                >
-                  - - - - - - - - - - - - - - - - -
-                </p>
-
-                {sections.map((sec) => (
-                  <div key={sec.section} className="mb-2">
-                    <p
-                      data-receipt-line
-                      className="text-[0.7rem] mt-1 mb-0.5 text-[#888] tracking-[0.08em] uppercase"
-                    >
-                      {sec.section}
+                  <p
+                    data-receipt-line
+                    className="text-center my-1.5 text-sm leading-[1.4] text-[#555]"
+                  >
+                    {getFlagEmoji(selected.country_code)}{" "}
+                    {selected.country.toUpperCase()}
+                  </p>
+                  <a
+                    data-receipt-line
+                    className="text-[0.65rem] leading-[1.4] text-[#777] underline hover:text-blue-500 transition-colors duration-200"
+                    href={`https://maps.google.com/?q=${selected.address}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <p className="text-center">
+                      {selected.address}
                     </p>
-                    {sec.items.map((item) => (
+                  </a>
+
+                  <p
+                    data-receipt-line
+                    className="text-center text-[0.7rem] my-2 text-[#999]"
+                  >
+                    - - - - - - - - - - - - - - - - -
+                  </p>
+
+                  <p
+                    data-receipt-line
+                    className="text-[0.7rem] my-px leading-[1.4] text-[#555]"
+                  >
+                    ORDER #{String(selected.id).padStart(4, "0")}
+                  </p>
+
+                  <p
+                    data-receipt-line
+                    className="text-center text-[0.7rem] my-2 text-[#999]"
+                  >
+                    - - - - - - - - - - - - - - - - -
+                  </p>
+
+                  {sections.map((sec) => (
+                    <div key={sec.section} className="mb-2">
                       <p
-                        key={item}
                         data-receipt-line
-                        className="text-[0.8rem] my-px leading-normal text-[#222] pl-1"
+                        className="text-[0.7rem] mt-1 mb-0.5 text-[#888] tracking-[0.08em] uppercase"
                       >
-                        {item}
+                        {sec.section}
                       </p>
-                    ))}
-                  </div>
-                ))}
+                      {sec.items.map((item) => (
+                        <p
+                          key={item}
+                          data-receipt-line
+                          className="text-[0.8rem] my-px leading-normal text-[#222] pl-1"
+                        >
+                          {item}
+                        </p>
+                      ))}
+                    </div>
+                  ))}
 
-                <p
-                  data-receipt-line
-                  className="text-center text-[0.7rem] my-2 text-[#999]"
-                >
-                  - - - - - - - - - - - - - - - - -
-                </p>
+                  <p
+                    data-receipt-line
+                    className="text-center text-[0.7rem] my-2 text-[#999]"
+                  >
+                    - - - - - - - - - - - - - - - - -
+                  </p>
 
-                <p
-                  data-receipt-line
-                  className="text-center text-[0.8rem] my-px leading-[1.6] text-[#555]"
+                  <p
+                    data-receipt-line
+                    className="text-center text-[0.8rem] my-px leading-[1.6] text-[#555]"
+                  >
+                    THANK YOU FOR DINING WITH US!
+                  </p>
+                  <p
+                    data-receipt-line
+                    className="text-center text-[0.7rem] my-px leading-[1.4] text-[#888]"
+                  >
+                    tastebuds_nyc
+                  </p>
+                  <p
+                    data-receipt-line
+                    className="text-center text-[0.7rem] mt-2 mb-12 text-[#aaa]"
+                  >
+                    * * * CUSTOMER COPY * * *
+                  </p>
+                </div>
+
+                {/* Torn edge */}
+                <svg
+                  className="w-full block"
+                  height="12"
+                  preserveAspectRatio="none"
+                  viewBox="0 0 280 12"
                 >
-                  THANK YOU FOR DINING WITH US!
-                </p>
-                <p
-                  data-receipt-line
-                  className="text-center text-[0.7rem] my-px leading-[1.4] text-[#888]"
-                >
-                  tastebuds_nyc
-                </p>
-                <p
-                  data-receipt-line
-                  className="text-center text-[0.7rem] mt-2 text-[#aaa]"
-                >
-                  * * * CUSTOMER COPY * * *
-                </p>
+                  <path
+                    d="M0,0 L5,4 L10,1 L15,5 L20,2 L25,6 L30,1 L35,5 L40,2 L45,4 L50,1 L55,5 L60,2 L65,6 L70,1 L75,4 L80,2 L85,5 L90,1 L95,6 L100,2 L105,4 L110,1 L115,5 L120,2 L125,6 L130,1 L135,4 L140,2 L145,5 L150,1 L155,6 L160,2 L165,4 L170,1 L175,5 L180,2 L185,6 L190,1 L195,4 L200,2 L205,5 L210,1 L215,6 L220,2 L225,4 L230,1 L235,5 L240,2 L245,6 L250,1 L255,4 L260,2 L265,5 L270,1 L275,4 L280,0"
+                    fill="#fffef8"
+                  />
+                </svg>
               </div>
 
-              {/* Torn edge */}
-              <svg
-                className="w-full block"
-                height="12"
-                preserveAspectRatio="none"
-                viewBox="0 0 280 12"
+              {/* Post-it note with links */}
+              <div
+                ref={postItRef}
+                className={`absolute -bottom-[4%] left-1/2 -translate-x-1/2 w-[150px] bg-[#fef08a] px-3 py-2.5 shadow-[2px_2px_6px_rgba(0,0,0,0.15)] ${nanumPenScript.className}`}
+                style={{ opacity: 0, transformOrigin: "top left" }}
               >
-                <path
-                  d="M0,0 L5,4 L10,1 L15,5 L20,2 L25,6 L30,1 L35,5 L40,2 L45,4 L50,1 L55,5 L60,2 L65,6 L70,1 L75,4 L80,2 L85,5 L90,1 L95,6 L100,2 L105,4 L110,1 L115,5 L120,2 L125,6 L130,1 L135,4 L140,2 L145,5 L150,1 L155,6 L160,2 L165,4 L170,1 L175,5 L180,2 L185,6 L190,1 L195,4 L200,2 L205,5 L210,1 L215,6 L220,2 L225,4 L230,1 L235,5 L240,2 L245,6 L250,1 L255,4 L260,2 L265,5 L270,1 L275,4 L280,0"
-                  fill="#fffef8"
-                />
-              </svg>
+                {/* Tape strip */}
+                <div className="absolute -top-2.5 left-1/2 -translate-x-1/2 w-12 h-5 bg-[#fde68a]/60 rounded-sm" />
+
+                <div className="flex flex-col gap-1.5 mt-1">
+                  {selected.tiktok_video_id && (
+                    <a
+                      href={`https://www.tiktok.com/@tastebuds_nyc/video/${selected.tiktok_video_id}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-1.5 text-[#92400e] hover:text-[#78350f] transition-colors duration-150 no-underline"
+                    >
+                      {/* Globe icon */}
+                      <TiktokLogoIcon size={18} weight="bold" />
+                      <span className="leading-tight truncate">tiktok</span>
+                    </a>
+                  )}
+                  {selected.website && (
+                    <a
+                      href={selected.website}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-1.5 text-[#92400e] hover:text-[#78350f] transition-colors duration-150 no-underline"
+                    >
+                      {/* Globe icon */}
+                      <GlobeIcon size={18} weight="bold" />
+                      <span className="leading-tight truncate">website</span>
+                    </a>
+                  )}
+                  {selected.instagram && (
+                    <a
+                      href={`https://instagram.com/${selected.instagram}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-1.5 text-[#92400e] hover:text-[#78350f] transition-colors duration-150 no-underline"
+                    >
+                      {/* Instagram icon */}
+                      <InstagramLogoIcon size={18} weight="bold" />
+                      <span className="leading-tight truncate">@{selected.instagram}</span>
+                    </a>
+                  )}
+                </div>
+              </div>
             </div>
           )}
         </div>
