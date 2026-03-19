@@ -243,5 +243,19 @@
       "Fish Fillet"
     ],
     "desserts": []
+  },
+  {
+    "id": 17,
+    "restaurant_name": "Bohemian Spirit",
+    "country": "Czechia",
+    "country_code": "CZ",
+    "address": "321 E 73rd St, New York, NY 10021",
+    "tiktok_video_id": "7619063514100523274",
+    "website": "https://bohemianspiritrestaurant.com/",
+    "instagram": "bohemianspiritrestaurantnyc",
+    "beverages": ["Soju", "Beer"],
+    "appetizers": ["Haemul Pajeon", "Mandu"],
+    "mains": ["Galbi", "Bulgogi", "Bibimbap"],
+    "desserts": []
   }
 ]

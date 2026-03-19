@@ -37,6 +37,7 @@ const COORDS: Record<string, [number, number]> = {
   BR: [-14.2, -51.9],
   SY: [35.0, 38.0],
   HT: [19.0, -72.3],
+  CZ: [49.8, 15.5],
 };
 
 type ReceiptSection = { section: string; items: string[] };
@@ -291,7 +292,7 @@ export default function Home() {
               in="SourceAlpha"
               result="Dilated"
               operator="dilate"
-              radius="4"
+              radius="3"
             />
             <feFlood floodColor="#ffffff" result="OutlineColor" />
             <feComposite
