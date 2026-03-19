@@ -85,8 +85,8 @@ export default function Home() {
     // Title drops in
     tl.fromTo(
       titleRef.current,
-      { y: -40, opacity: 0, scale: 0.9 },
-      { y: 0, opacity: 1, scale: 1, duration: 0.8 }
+      { y: 40, opacity: 0 },
+      { y: 0, opacity: 1, duration: 0.8 }
     );
 
     // Subtitle fades in
@@ -94,7 +94,7 @@ export default function Home() {
       subtitleRef.current,
       { y: 10, opacity: 0 },
       { y: 0, opacity: 1, duration: 0.5 },
-      "-=0.3"
+      "-=0.5"
     );
 
     // Globe scales up with a satisfying bounce
@@ -316,39 +316,42 @@ export default function Home() {
       >
         tastebuds nyc receipts
       </h1>
-      <div
-        ref={subtitleRef}
-        className={`text-[#8a7e78] text-lg tracking-[0.08em] flex items-center gap-1.5 mb-4 font-semibold ${zalandoSans.className}`}
-      >
-        <a href="https://www.tiktok.com/@tastebuds_nyc" target="_blank" rel="noopener noreferrer" className="flex gap-2 items-center hover:text-[#1a1520] transition-colors duration-200">
-          <span>
-            <TiktokLogoIcon size={18} weight="fill" />
-          </span>
-          tiktok
-        </a>
-        <p>
-          ·
-        </p>
-        <a href="https://linktr.ee/Tastebuds_nyc" target="_blank" rel="noopener noreferrer" className="flex gap-2 items-center hover:text-[#1a1520] transition-colors duration-200">
-          <span>
-            <LinktreeLogoIcon size={18} weight="fill" />
-          </span>
-          linktree
-        </a>
-        <p>
-          ·
-        </p>
-        <a href="https://pinnit.io/map/tastebuds-nyc" target="_blank" rel="noopener noreferrer" className="flex gap-2 items-center hover:text-[#1a1520] transition-colors duration-200">
-          <span>
-            <MapPinIcon size={18} weight="fill" />
-          </span>
-          pinnit
-        </a>
-      </div>
 
-      <p className={`text-sm text-[#8a7e78] tracking-[0.08em] ${zalandoSans.className}`}>
-        spin the globe, click a flag, view the receipt!
-      </p>
+      <div ref={subtitleRef} className="flex flex-col items-center">
+        <div
+          className={`text-[#8a7e78] text-lg tracking-[0.08em] flex items-center gap-1.5 mb-4 font-semibold ${zalandoSans.className}`}
+        >
+          <a href="https://www.tiktok.com/@tastebuds_nyc" target="_blank" rel="noopener noreferrer" className="flex gap-2 items-center hover:text-[#1a1520] transition-colors duration-200">
+            <span>
+              <TiktokLogoIcon size={18} weight="fill" />
+            </span>
+            tiktok
+          </a>
+          <p>
+            ·
+          </p>
+          <a href="https://linktr.ee/Tastebuds_nyc" target="_blank" rel="noopener noreferrer" className="flex gap-2 items-center hover:text-[#1a1520] transition-colors duration-200">
+            <span>
+              <LinktreeLogoIcon size={18} weight="fill" />
+            </span>
+            linktree
+          </a>
+          <p>
+            ·
+          </p>
+          <a href="https://pinnit.io/map/tastebuds-nyc" target="_blank" rel="noopener noreferrer" className="flex gap-2 items-center hover:text-[#1a1520] transition-colors duration-200">
+            <span>
+              <MapPinIcon size={18} weight="fill" />
+            </span>
+            pinnit
+          </a>
+        </div>
+
+        <p className={`text-sm text-[#8a7e78] tracking-[0.08em] ${zalandoSans.className}`}>
+          spin the globe, click a flag, view the receipt!
+        </p>
+
+      </div>
 
       <div className="flex items-center justify-center flex-wrap w-full mt-10">
         <div
