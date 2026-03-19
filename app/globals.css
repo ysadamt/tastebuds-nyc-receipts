@@ -1,7 +1,6 @@
 @import "tailwindcss";
 
 :root {
-  --animation: all 4s steps(30);
   --printer-size: 300px;
 }
 
@@ -237,21 +236,14 @@ body {
 /* ── Receipt paper ──────────────────────────────────────────── */
 
 .paper {
-  height: calc(var(--printer-size) - 30px);
   width: 100%;
   padding: 12px 14px 0;
   background: #fffef8;
   box-sizing: border-box;
-  transform: translateY(-100%);
   transition: all 1s ease;
   mask: radial-gradient(circle at bottom, #0000 0.45rem, #000 0.45rem);
   mask-size: 9% 100%;
   overflow: hidden;
-}
-
-.printing .paper {
-  transform: translateY(0);
-  transition: var(--animation, all 4s steps(1));
 }
 
 /* ── Receipt content ────────────────────────────────────────── */

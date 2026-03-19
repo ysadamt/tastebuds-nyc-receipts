@@ -240,65 +240,57 @@ export default function Home() {
             }}
             aria-label="Toggle receipt"
           >
-            {/* Printer body — fixed height, never moves */}
-            <div className="printerBody">
-              <div className="signal" />
-              <div className="printerSlot" />
-            </div>
 
             {/* Paper clip area — overflow hides paper until printing */}
-            <div className="paperClip">
-              {selected && (
-                <div className={`paper ${fakeReceipt.className}`}>
-                  <p className="rCenter rBig">{selected.restaurant_name.toUpperCase()}</p>
-                  <p className="rCenter rSm">{getFlagEmoji(selected.country_code)} {selected.country.toUpperCase()}</p>
-                  <p className="rCenter rSm">{selected.address}</p>
-                  <br />
-                  <p className="rCenter rSm">================================</p>
-                  <p className="rSm">DATE: {receiptDate.split(",")[0]}</p>
-                  <p className="rSm">TIME: {receiptDate.split(",").slice(1).join(",").trim()}</p>
-                  <p className="rSm">ORDER #: {String(selected.id).padStart(4, "0")}</p>
-                  <p className="rCenter rSm">--------------------------------</p>
+            {selected && (
+              <div className={`paper ${fakeReceipt.className}`}>
+                <p className="rCenter rBig">{selected.restaurant_name.toUpperCase()}</p>
+                <p className="rCenter rSm">{getFlagEmoji(selected.country_code)} {selected.country.toUpperCase()}</p>
+                <p className="rCenter rSm">{selected.address}</p>
+                <br />
+                <p className="rCenter rSm">================================</p>
+                <p className="rSm">DATE: {receiptDate.split(",")[0]}</p>
+                <p className="rSm">TIME: {receiptDate.split(",").slice(1).join(",").trim()}</p>
+                <p className="rSm">ORDER #: {String(selected.id).padStart(4, "0")}</p>
+                <p className="rCenter rSm">--------------------------------</p>
 
-                  {sections.map((sec) => (
-                    <div key={sec.section}>
-                      <p className="rSm rUnderline">{sec.section}</p>
-                      {sec.items.map((item) => (
-                        <div key={item.label} className="rRow">
-                          <span className="rItemName">{item.label}</span>
-                          <span className="rDots" />
-                          <span className="rItemPrice">${item.price}</span>
-                        </div>
-                      ))}
-                    </div>
-                  ))}
+                {sections.map((sec) => (
+                  <div key={sec.section}>
+                    <p className="rSm rUnderline">{sec.section}</p>
+                    {sec.items.map((item) => (
+                      <div key={item.label} className="rRow">
+                        <span className="rItemName">{item.label}</span>
+                        <span className="rDots" />
+                        <span className="rItemPrice">${item.price}</span>
+                      </div>
+                    ))}
+                  </div>
+                ))}
 
-                  <p className="rCenter rSm">--------------------------------</p>
-                  <div className="rRow rSm">
-                    <span>SUBTOTAL</span><span className="rDots" /><span>${subtotal.toFixed(2)}</span>
-                  </div>
-                  <div className="rRow rSm">
-                    <span>TAX (8.875%)</span><span className="rDots" /><span>${tax.toFixed(2)}</span>
-                  </div>
-                  <p className="rCenter rSm">================================</p>
-                  <div className="rRow rBig rBold">
-                    <span>TOTAL</span><span className="rDots" /><span>${total.toFixed(2)}</span>
-                  </div>
-                  <p className="rCenter rSm">================================</p>
-                  <br />
-                  <p className="rCenter rSm">THANK YOU FOR DINING WITH US!</p>
-                  <p className="rCenter rSm">PLEASE COME AGAIN SOON</p>
-                  <br />
-                  <p className="rCenter rSm">tastebuds.nyc</p>
-                  <p className="rCenter rSm">* * * CUSTOMER COPY * * *</p>
-                  <div style={{ height: 40 }} />
+                <p className="rCenter rSm">--------------------------------</p>
+                <div className="rRow rSm">
+                  <span>SUBTOTAL</span><span className="rDots" /><span>${subtotal.toFixed(2)}</span>
                 </div>
-              )}
-            </div>
+                <div className="rRow rSm">
+                  <span>TAX (8.875%)</span><span className="rDots" /><span>${tax.toFixed(2)}</span>
+                </div>
+                <p className="rCenter rSm">================================</p>
+                <div className="rRow rBig rBold">
+                  <span>TOTAL</span><span className="rDots" /><span>${total.toFixed(2)}</span>
+                </div>
+                <p className="rCenter rSm">================================</p>
+                <br />
+                <p className="rCenter rSm">THANK YOU FOR DINING WITH US!</p>
+                <p className="rCenter rSm">PLEASE COME AGAIN SOON</p>
+                <br />
+                <p className="rCenter rSm">tastebuds.nyc</p>
+                <p className="rCenter rSm">* * * CUSTOMER COPY * * *</p>
+                <div style={{ height: 40 }} />
+              </div>
+            )}
           </div>
-          {selected && <p className="printerHint">click printer to toggle receipt</p>}
         </div>
       </div>
-    </main>
+    </main >
   );
 }
