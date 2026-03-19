@@ -284,7 +284,7 @@ export default function Home() {
   const sections = selected ? buildSections(selected) : [];
 
   return (
-    <main className="min-h-screen bg-[#f2ede6] flex flex-col items-center px-5 pt-8 pb-16 text-[#1a1520]">
+    <main className="min-h-screen bg-[#f2ede6] flex flex-col justify-between items-center px-5 pt-8 pb-16 text-[#1a1520]">
       {/* SVG sticker outline filter */}
       <svg width="0" height="0" style={{ position: "absolute" }}>
         <defs>
@@ -400,7 +400,7 @@ export default function Home() {
         </div>
 
         {/* Receipt */}
-        <div ref={receiptAreaRef} className="flex flex-col items-center">
+        <div ref={receiptAreaRef} className="flex flex-col items-center drop-shadow-md">
           {selected && (
             <div className="relative">
               <div
@@ -570,6 +570,13 @@ export default function Home() {
             </div>
           )}
         </div>
+
+      </div>
+      {/* Footer */}
+      <div className="flex flex-col items-center mt-10">
+        <p className={`text-sm text-[#8a7e78] tracking-[0.08em] ${zalandoSans.className}`}>
+          made with ❤️ by <a href="https://www.ysadamt.com" target="_blank" rel="noopener noreferrer" className="text-[#92400e] hover:text-[#78350f] transition-colors duration-150 no-underline">ysadamt</a>
+        </p>
       </div>
     </main >
   );
