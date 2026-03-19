@@ -30,10 +30,10 @@
     "country": "Philippines",
     "country_code": "PH",
     "address": "40-06 70th St, Woodside, NY 11377",
-    "beverages": ["Fresh cantaloupe", "Pa"],
+    "beverages": ["Fresh cantaloupe", "Lemonade"],
     "appetizers": [],
     "mains": [
-      "Daing Na Bangus (fried milkfish)",
+      "Daing Na Bangus",
       "Lumpiang Shanghai",
       "Pinakbet",
       "Siling Labuyo",
@@ -50,7 +50,7 @@
     "beverages": ["Polar Pilsner Beer", "Ponche Crema"],
     "appetizers": ["Empanadas de carne", "Yucca fries", "tequeno"],
     "mains": [
-      "Hallaca (traditional holiday dish)",
+      "Hallaca",
       "Pan de jamon",
       "Arepa Pabellon"
     ],
@@ -91,7 +91,7 @@
     "appetizers": [],
     "mains": [
       "Momo",
-      "Shamu Datsi (mushrooms)",
+      "Shamu Datsi",
       "Sikam Paa",
       "Shaka Datsi",
       "Red rice"

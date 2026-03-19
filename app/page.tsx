@@ -4,6 +4,11 @@ import createGlobe from "cobe";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { fakeReceipt } from "./utils/fonts";
 import restaurantsData from "../data/restaurants.json";
+import { Nanum_Pen_Script, Zalando_Sans } from "next/font/google";
+import gsap from "gsap";
+
+const nanumPenScript = Nanum_Pen_Script({ weight: "400" });
+const zalandoSans = Zalando_Sans({ weight: ["400", "700"] });
 
 type Restaurant = (typeof restaurantsData)[0];
 
@@ -33,24 +38,18 @@ const COORDS: Record<string, [number, number]> = {
   HT: [19.0, -72.3],
 };
 
-function hashPrice(seed: string, min: number, max: number): string {
-  let h = 0;
-  for (const c of seed) h = (h * 31 + c.charCodeAt(0)) & 0xfffff;
-  return ((min * 100 + (h % ((max - min) * 100))) / 100).toFixed(2);
-}
-
-type ReceiptSection = { section: string; items: { label: string; price: string }[] };
+type ReceiptSection = { section: string; items: string[] };
 
 function buildSections(r: Restaurant): ReceiptSection[] {
   const out: ReceiptSection[] = [];
-  const add = (s: string, list: string[], lo: number, hi: number) => {
+  const add = (s: string, list: string[]) => {
     if (!list.length) return;
-    out.push({ section: s, items: list.map((n) => ({ label: n, price: hashPrice(n + r.id, lo, hi) })) });
+    out.push({ section: s, items: list });
   };
-  add("BEVERAGES", r.beverages, 5, 14);
-  add("APPETIZERS", r.appetizers, 8, 16);
-  add("MAINS", r.mains, 16, 32);
-  add("DESSERTS", r.desserts, 7, 13);
+  add("BEVERAGES", r.beverages);
+  add("APPETIZERS", r.appetizers);
+  add("MAINS", r.mains);
+  add("DESSERTS", r.desserts);
   return out;
 }
 
@@ -63,55 +62,159 @@ export default function Home() {
   const phiRef = useRef(1.0);
   const thetaRef = useRef(THETA);
   const isDraggingRef = useRef(false);
-  const hasEverDraggedRef = useRef(false);
   const lastXRef = useRef(0);
   const lastYRef = useRef(0);
 
+  // Refs for GSAP targets
+  const titleRef = useRef<HTMLHeadingElement>(null);
+  const subtitleRef = useRef<HTMLParagraphElement>(null);
+  const globeWrapperRef = useRef<HTMLDivElement>(null);
+  const receiptAreaRef = useRef<HTMLDivElement>(null);
+  const receiptCardRef = useRef<HTMLDivElement>(null);
+
   const [selected, setSelected] = useState<Restaurant | null>(null);
-  const [receiptOpen, setReceiptOpen] = useState(false);
-  const [receiptDate, setReceiptDate] = useState("");
+  const animatingRef = useRef(false);
 
-  const handleStickerClick = useCallback((r: Restaurant) => {
-    setSelected(r);
-    setReceiptDate(
-      new Date().toLocaleString("en-US", {
-        month: "2-digit", day: "2-digit", year: "numeric",
-        hour: "2-digit", minute: "2-digit", second: "2-digit", hour12: true,
-      })
+  // ── Page load entrance animation ──────────────────────────────
+  useEffect(() => {
+    const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+
+    // Title drops in
+    tl.fromTo(
+      titleRef.current,
+      { y: -40, opacity: 0, scale: 0.9 },
+      { y: 0, opacity: 1, scale: 1, duration: 0.8 }
     );
-    setReceiptOpen(false);
-    requestAnimationFrame(() => setReceiptOpen(true));
+
+    // Subtitle fades in
+    tl.fromTo(
+      subtitleRef.current,
+      { y: 10, opacity: 0 },
+      { y: 0, opacity: 1, duration: 0.5 },
+      "-=0.3"
+    );
+
+    // Globe scales up with a satisfying bounce
+    tl.fromTo(
+      globeWrapperRef.current,
+      { scale: 0, opacity: 0 },
+      { scale: 1, opacity: 1, duration: 1, ease: "back.out(1.4)" },
+      "-=0.3"
+    );
   }, []);
 
-  const onPointerDown = useCallback((e: React.PointerEvent<HTMLCanvasElement>) => {
-    isDraggingRef.current = true;
-    hasEverDraggedRef.current = true;
-    lastXRef.current = e.clientX;
-    lastYRef.current = e.clientY;
-    e.currentTarget.setPointerCapture(e.pointerId);
+  // ── Receipt animation on selection ────────────────────────────
+  const animateReceiptIn = useCallback(() => {
+    if (!receiptCardRef.current) return;
+
+    const card = receiptCardRef.current;
+    const lines = card.querySelectorAll("[data-receipt-line]");
+
+    const tl = gsap.timeline({
+      defaults: { ease: "power2.out" },
+      onComplete: () => { animatingRef.current = false; },
+    });
+
+    // Receipt slides down like paper printing — reveal via clipPath
+    tl.fromTo(
+      card,
+      {
+        clipPath: "inset(0 0 100% 0)",
+        opacity: 1,
+        y: -10,
+        rotate: 0,
+      },
+      {
+        clipPath: "inset(0 0 0% 0)",
+        y: 0,
+        rotate: 2,
+        duration: 0.7,
+        ease: "power2.inOut",
+      }
+    );
+
+    // Lines stagger in with a typewriter-like feel
+    tl.fromTo(
+      lines,
+      { opacity: 0, x: -6 },
+      { opacity: 1, x: 0, duration: 0.25, stagger: 0.03, ease: "power1.out" },
+      "-=0.3"
+    );
   }, []);
 
-  const onPointerMove = useCallback((e: React.PointerEvent<HTMLCanvasElement>) => {
-    if (!isDraggingRef.current) return;
+  const handleStickerClick = useCallback(
+    (r: Restaurant) => {
+      if (animatingRef.current) return;
+      animatingRef.current = true;
 
-    const dx = e.clientX - lastXRef.current;
-    const dy = e.clientY - lastYRef.current;
+      // If a receipt is already showing, animate it out first
+      if (selected && receiptCardRef.current) {
+        gsap.to(receiptCardRef.current, {
+          clipPath: "inset(0 0 100% 0)",
+          y: -10,
+          rotate: 0,
+          opacity: 0,
+          duration: 0.35,
+          ease: "power2.in",
+          onComplete: () => {
+            setSelected(r);
+            // Wait for React to render the new receipt, then animate in
+            requestAnimationFrame(() => {
+              requestAnimationFrame(() => {
+                animateReceiptIn();
+              });
+            });
+          },
+        });
+      } else {
+        setSelected(r);
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            animateReceiptIn();
+          });
+        });
+      }
+    },
+    [selected, animateReceiptIn]
+  );
 
-    phiRef.current += dx * 0.005;
-    thetaRef.current = Math.max(THETA_MIN, Math.min(THETA_MAX, thetaRef.current + dy * 0.005));
+  const onPointerDown = useCallback(
+    (e: React.PointerEvent<HTMLCanvasElement>) => {
+      isDraggingRef.current = true;
+      lastXRef.current = e.clientX;
+      lastYRef.current = e.clientY;
+      e.currentTarget.setPointerCapture(e.pointerId);
+    },
+    []
+  );
 
-    lastXRef.current = e.clientX;
-    lastYRef.current = e.clientY;
+  const onPointerMove = useCallback(
+    (e: React.PointerEvent<HTMLCanvasElement>) => {
+      if (!isDraggingRef.current) return;
+
+      const dx = e.clientX - lastXRef.current;
+      const dy = e.clientY - lastYRef.current;
+
+      phiRef.current += dx * 0.005;
+      thetaRef.current = Math.max(
+        THETA_MIN,
+        Math.min(THETA_MAX, thetaRef.current + dy * 0.005)
+      );
+
+      lastXRef.current = e.clientX;
+      lastYRef.current = e.clientY;
+    },
+    []
+  );
+
+  const onPointerUp = useCallback(() => {
+    isDraggingRef.current = false;
   }, []);
-
-  const onPointerUp = useCallback(() => { isDraggingRef.current = false; }, []);
 
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
 
-    // Each marker has an id so COBE creates a CSS anchor div (--cobe-{id}) and
-    // sets --cobe-visible-{id}: 1 on :root when the marker faces the camera.
     const markers = restaurantsData.map((r) => {
       const [lat, lng] = COORDS[r.country_code] ?? [0, 0];
       return {
@@ -142,61 +245,72 @@ export default function Home() {
 
     let rafId: number;
     function frame() {
-      // Auto-rotate until the user drags for the first time
-      if (!isDraggingRef.current && !hasEverDraggedRef.current) {
-        phiRef.current += 0.003;
+      if (!isDraggingRef.current) {
+        phiRef.current += 0.001;
       }
       globe.update({ phi: phiRef.current, theta: thetaRef.current });
       rafId = requestAnimationFrame(frame);
     }
     rafId = requestAnimationFrame(frame);
 
-    return () => { cancelAnimationFrame(rafId); globe.destroy(); };
+    return () => {
+      cancelAnimationFrame(rafId);
+      globe.destroy();
+    };
   }, []);
 
   const sections = selected ? buildSections(selected) : [];
-  const allItems = sections.flatMap((s) => s.items);
-  const subtotal = allItems.reduce((s, i) => s + parseFloat(i.price), 0);
-  const tax = subtotal * 0.08875;
-  const total = subtotal + tax;
 
   return (
-    <main className="globePage">
+    <main className="min-h-screen bg-[#f2ede6] flex flex-col items-center px-5 pt-8 pb-16 text-[#1a1520] font-[Trebuchet_MS,Segoe_UI,sans-serif] select-none">
       {/* SVG sticker outline filter */}
-      <svg width='0' height='0' style={{ position: 'absolute' }}>
+      <svg width="0" height="0" style={{ position: "absolute" }}>
         <defs>
-          <filter id='sticker-outline'>
+          <filter id="sticker-outline">
             <feMorphology
-              in='SourceAlpha'
-              result='Dilated'
-              operator='dilate'
-              radius='4'
+              in="SourceAlpha"
+              result="Dilated"
+              operator="dilate"
+              radius="4"
             />
-            <feFlood floodColor='#ffffff' result='OutlineColor' />
+            <feFlood floodColor="#ffffff" result="OutlineColor" />
             <feComposite
-              in='OutlineColor'
-              in2='Dilated'
-              operator='in'
-              result='Outline'
+              in="OutlineColor"
+              in2="Dilated"
+              operator="in"
+              result="Outline"
             />
             <feMerge>
-              <feMergeNode in='Outline' />
-              <feMergeNode in='SourceGraphic' />
+              <feMergeNode in="Outline" />
+              <feMergeNode in="SourceGraphic" />
             </feMerge>
           </filter>
         </defs>
       </svg>
 
-      <h1 className="pageTitle">tastebuds nyc</h1>
-      <p className="pageSubtitle">spin the globe · click a flag · print your receipt</p>
+      <h1
+        ref={titleRef}
+        className={`tracking-wide ${nanumPenScript.className} text-7xl mb-2 opacity-0`}
+      >
+        tastebuds nyc
+      </h1>
+      <p
+        ref={subtitleRef}
+        className={`text-sm text-[#8a7e78] tracking-[0.08em] ${zalandoSans.className} opacity-0`}
+      >
+        spin the globe · click a flag · view the receipt
+      </p>
 
-      <div className="mainLayout">
-        <div className="globeWrapper">
+      <div className="flex items-center justify-center flex-wrap w-full mt-12">
+        <div
+          ref={globeWrapperRef}
+          className="globeWrapper relative w-[750px] h-[750px] shrink-0 opacity-0"
+        >
           <canvas
             ref={canvasRef}
             width={750}
             height={750}
-            className="globeCanvas"
+            className="globeCanvas block w-[750px]! h-[750px]! rounded-full cursor-grab active:cursor-grabbing"
             onPointerDown={onPointerDown}
             onPointerMove={onPointerMove}
             onPointerUp={onPointerUp}
@@ -212,85 +326,143 @@ export default function Home() {
             <div
               key={r.id}
               className="globeSticker"
-              style={{
-                positionAnchor: `--cobe-${r.id}`,
-                opacity: `var(--cobe-visible-${r.id}, 0)`,
-                pointerEvents: `var(--cobe-visible-${r.id}, none)` as React.CSSProperties["pointerEvents"],
-              } as React.CSSProperties}
+              style={
+                {
+                  positionAnchor: `--cobe-${r.id}`,
+                  opacity: `var(--cobe-visible-${r.id}, 0)`,
+                  pointerEvents: `var(--cobe-visible-${r.id}, none)` as React.CSSProperties["pointerEvents"],
+                } as React.CSSProperties
+              }
               onClick={() => handleStickerClick(r)}
               title={`${r.restaurant_name} · ${r.country}`}
               role="button"
               tabIndex={0}
-              onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") handleStickerClick(r); }}
+              onKeyDown={(e) => {
+                if (e.key === "Enter" || e.key === " ")
+                  handleStickerClick(r);
+              }}
             >
               {getFlagEmoji(r.country_code)}
             </div>
           ))}
         </div>
 
-        {/* Receipt printer */}
-        <div className={`receiptArea ${selected ? "visible" : ""}`}>
-          <div
-            className={`printerWrap ${receiptOpen ? "printing" : ""}`}
-            onClick={() => setReceiptOpen((p) => !p)}
-            role="button"
-            tabIndex={0}
-            onKeyDown={(e) => {
-              if (e.key === "Enter" || e.key === " ") { e.preventDefault(); setReceiptOpen((p) => !p); }
-            }}
-            aria-label="Toggle receipt"
-          >
+        {/* Receipt */}
+        <div ref={receiptAreaRef} className="flex flex-col items-center">
+          {selected && (
+            <div
+              ref={receiptCardRef}
+              className="w-[280px] flex flex-col"
+              style={{ clipPath: "inset(0 0 100% 0)", opacity: 0 }}
+            >
+              {/* Paper body */}
+              <div
+                className={`w-full px-5 pt-4 pb-6 bg-[#fffef8] shadow-[0_1px_4px_rgba(0,0,0,0.08)] ${fakeReceipt.className}`}
+              >
+                <p
+                  data-receipt-line
+                  className="text-center text-lg my-0.5 text-black font-bold tracking-wide"
+                >
+                  {selected.restaurant_name.toUpperCase()}
+                </p>
+                <p
+                  data-receipt-line
+                  className="text-center my-px text-sm leading-[1.4] text-[#555]"
+                >
+                  {getFlagEmoji(selected.country_code)}{" "}
+                  {selected.country.toUpperCase()}
+                </p>
+                <p
+                  data-receipt-line
+                  className="text-center text-[0.65rem] my-px leading-[1.4] text-[#777]"
+                >
+                  {selected.address}
+                </p>
 
-            {/* Paper clip area — overflow hides paper until printing */}
-            {selected && (
-              <div className={`paper ${fakeReceipt.className}`}>
-                <p className="rCenter rBig">{selected.restaurant_name.toUpperCase()}</p>
-                <p className="rCenter rSm">{getFlagEmoji(selected.country_code)} {selected.country.toUpperCase()}</p>
-                <p className="rCenter rSm">{selected.address}</p>
-                <br />
-                <p className="rCenter rSm">================================</p>
-                <p className="rSm">DATE: {receiptDate.split(",")[0]}</p>
-                <p className="rSm">TIME: {receiptDate.split(",").slice(1).join(",").trim()}</p>
-                <p className="rSm">ORDER #: {String(selected.id).padStart(4, "0")}</p>
-                <p className="rCenter rSm">--------------------------------</p>
+                <p
+                  data-receipt-line
+                  className="text-center text-[0.7rem] my-2 text-[#999]"
+                >
+                  - - - - - - - - - - - - - - - -
+                </p>
+
+                <p
+                  data-receipt-line
+                  className="text-[0.65rem] my-px leading-[1.4] text-[#555]"
+                >
+                  ORDER #{String(selected.id).padStart(4, "0")}
+                </p>
+
+                <p
+                  data-receipt-line
+                  className="text-center text-[0.7rem] my-2 text-[#999]"
+                >
+                  - - - - - - - - - - - - - - - -
+                </p>
 
                 {sections.map((sec) => (
-                  <div key={sec.section}>
-                    <p className="rSm rUnderline">{sec.section}</p>
+                  <div key={sec.section} className="mb-2">
+                    <p
+                      data-receipt-line
+                      className="text-[0.6rem] mt-1 mb-0.5 text-[#888] tracking-[0.08em] uppercase"
+                    >
+                      {sec.section}
+                    </p>
                     {sec.items.map((item) => (
-                      <div key={item.label} className="rRow">
-                        <span className="rItemName">{item.label}</span>
-                        <span className="rDots" />
-                        <span className="rItemPrice">${item.price}</span>
-                      </div>
+                      <p
+                        key={item}
+                        data-receipt-line
+                        className="text-[0.7rem] my-px leading-normal text-[#222] pl-1"
+                      >
+                        {item}
+                      </p>
                     ))}
                   </div>
                 ))}
 
-                <p className="rCenter rSm">--------------------------------</p>
-                <div className="rRow rSm">
-                  <span>SUBTOTAL</span><span className="rDots" /><span>${subtotal.toFixed(2)}</span>
-                </div>
-                <div className="rRow rSm">
-                  <span>TAX (8.875%)</span><span className="rDots" /><span>${tax.toFixed(2)}</span>
-                </div>
-                <p className="rCenter rSm">================================</p>
-                <div className="rRow rBig rBold">
-                  <span>TOTAL</span><span className="rDots" /><span>${total.toFixed(2)}</span>
-                </div>
-                <p className="rCenter rSm">================================</p>
-                <br />
-                <p className="rCenter rSm">THANK YOU FOR DINING WITH US!</p>
-                <p className="rCenter rSm">PLEASE COME AGAIN SOON</p>
-                <br />
-                <p className="rCenter rSm">tastebuds.nyc</p>
-                <p className="rCenter rSm">* * * CUSTOMER COPY * * *</p>
-                <div style={{ height: 40 }} />
+                <p
+                  data-receipt-line
+                  className="text-center text-[0.7rem] my-2 text-[#999]"
+                >
+                  - - - - - - - - - - - - - - - -
+                </p>
+
+                <p
+                  data-receipt-line
+                  className="text-center text-[0.7rem] my-px leading-[1.6] text-[#555]"
+                >
+                  THANK YOU FOR DINING WITH US!
+                </p>
+                <p
+                  data-receipt-line
+                  className="text-center text-[0.65rem] my-px leading-[1.4] text-[#888]"
+                >
+                  tastebuds_nyc
+                </p>
+                <p
+                  data-receipt-line
+                  className="text-center text-[0.6rem] mt-2 text-[#aaa]"
+                >
+                  * * * CUSTOMER COPY * * *
+                </p>
               </div>
-            )}
-          </div>
+
+              {/* Torn edge */}
+              <svg
+                className="w-full block"
+                height="12"
+                preserveAspectRatio="none"
+                viewBox="0 0 280 12"
+              >
+                <path
+                  d="M0,0 L5,4 L10,1 L15,5 L20,2 L25,6 L30,1 L35,5 L40,2 L45,4 L50,1 L55,5 L60,2 L65,6 L70,1 L75,4 L80,2 L85,5 L90,1 L95,6 L100,2 L105,4 L110,1 L115,5 L120,2 L125,6 L130,1 L135,4 L140,2 L145,5 L150,1 L155,6 L160,2 L165,4 L170,1 L175,5 L180,2 L185,6 L190,1 L195,4 L200,2 L205,5 L210,1 L215,6 L220,2 L225,4 L230,1 L235,5 L240,2 L245,6 L250,1 L255,4 L260,2 L265,5 L270,1 L275,4 L280,0"
+                  fill="#fffef8"
+                />
+              </svg>
+            </div>
+          )}
         </div>
       </div>
-    </main >
+    </main>
   );
 }
