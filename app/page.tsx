@@ -158,6 +158,7 @@ export default function Home() {
   const handleStickerClick = useCallback(
     (r: Restaurant) => {
       if (animatingRef.current) return;
+      if (selected?.id === r.id) return;
       animatingRef.current = true;
 
       // If a receipt is already showing, animate it out first
