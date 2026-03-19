@@ -575,7 +575,7 @@ export default function Home() {
       {/* Footer */}
       <div className="flex flex-col items-center mt-10">
         <p className={`text-sm text-[#8a7e78] tracking-[0.08em] ${zalandoSans.className}`}>
-          made with ❤️ by <a href="https://www.ysadamt.com" target="_blank" rel="noopener noreferrer" className="text-[#92400e] hover:text-[#78350f] transition-colors duration-150 no-underline">ysadamt</a>
+          made with ❤️ by <a href="https://www.ysadamt.com" target="_blank" rel="noopener noreferrer" className="text-[#92400e] hover:text-[#78350f] transition-colors duration-150 no-underline">ysadamt</a>, code available on <a href="https://github.com/ysadamt/tastebuds-nyc-receipts" target="_blank" rel="noopener noreferrer" className="text-[#92400e] hover:text-[#78350f] transition-colors duration-150 no-underline">github</a>.
         </p>
       </div>
     </main >
