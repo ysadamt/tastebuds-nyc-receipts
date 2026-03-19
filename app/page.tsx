@@ -189,9 +189,25 @@ export default function Home() {
           ease: "power2.in",
         }, postItRef.current ? "-=0.1" : "0");
       } else {
+        // FLIP: capture globe position before layout shift
+        const globeRect = globeWrapperRef.current?.getBoundingClientRect();
+
         setSelected(r);
         requestAnimationFrame(() => {
           requestAnimationFrame(() => {
+            // FLIP: animate globe from old position to new
+            if (globeRect && globeWrapperRef.current) {
+              const newRect = globeWrapperRef.current.getBoundingClientRect();
+              const dx = globeRect.left - newRect.left;
+              const dy = globeRect.top - newRect.top;
+              if (Math.abs(dx) > 1 || Math.abs(dy) > 1) {
+                gsap.fromTo(
+                  globeWrapperRef.current,
+                  { x: dx, y: dy },
+                  { x: 0, y: 0, duration: 0.7, ease: "power2.out" }
+                );
+              }
+            }
             animateReceiptIn();
           });
         });
@@ -353,7 +369,7 @@ export default function Home() {
 
       </div>
 
-      <div className="flex items-center justify-center flex-wrap w-full mt-10">
+      <div className="flex items-center justify-center flex-wrap w-full">
         <div
           ref={globeWrapperRef}
           className="globeWrapper relative w-[750px] h-[750px] shrink-0 opacity-0"
