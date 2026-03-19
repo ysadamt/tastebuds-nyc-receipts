@@ -434,19 +434,19 @@ export default function Home() {
 
                 <p
                   data-receipt-line
-                  className="text-center text-[0.7rem] my-px leading-[1.6] text-[#555]"
+                  className="text-center text-[0.8rem] my-px leading-[1.6] text-[#555]"
                 >
                   THANK YOU FOR DINING WITH US!
                 </p>
                 <p
                   data-receipt-line
-                  className="text-center text-[0.65rem] my-px leading-[1.4] text-[#888]"
+                  className="text-center text-[0.7rem] my-px leading-[1.4] text-[#888]"
                 >
                   tastebuds_nyc
                 </p>
                 <p
                   data-receipt-line
-                  className="text-center text-[0.65rem] mt-2 text-[#aaa]"
+                  className="text-center text-[0.7rem] mt-2 text-[#aaa]"
                 >
                   * * * CUSTOMER COPY * * *
                 </p>
