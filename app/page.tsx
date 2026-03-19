@@ -290,9 +290,9 @@ export default function Home() {
 
       <h1
         ref={titleRef}
-        className={`tracking-wide ${nanumPenScript.className} text-7xl mb-2 opacity-0`}
+        className={`text-center tracking-wide ${nanumPenScript.className} text-7xl mb-2 opacity-0`}
       >
-        tastebuds nyc
+        tastebuds nyc receipts
       </h1>
       <p
         ref={subtitleRef}
@@ -352,7 +352,7 @@ export default function Home() {
           {selected && (
             <div
               ref={receiptCardRef}
-              className="w-[280px] flex flex-col"
+              className="w-[300px] flex flex-col items-center"
               style={{ clipPath: "inset(0 0 100% 0)", opacity: 0 }}
             >
               {/* Paper body */}
@@ -361,34 +361,39 @@ export default function Home() {
               >
                 <p
                   data-receipt-line
-                  className="text-center text-lg my-0.5 text-black font-bold tracking-wide"
+                  className="text-center text-lg text-black font-bold tracking-wide"
                 >
                   {selected.restaurant_name.toUpperCase()}
                 </p>
                 <p
                   data-receipt-line
-                  className="text-center my-px text-sm leading-[1.4] text-[#555]"
+                  className="text-center my-1.5 text-sm leading-[1.4] text-[#555]"
                 >
                   {getFlagEmoji(selected.country_code)}{" "}
                   {selected.country.toUpperCase()}
                 </p>
-                <p
+                <a
                   data-receipt-line
-                  className="text-center text-[0.65rem] my-px leading-[1.4] text-[#777]"
+                  className="text-[0.65rem] leading-[1.4] text-[#777] underline hover:text-blue-500 transition-colors duration-200"
+                  href={`https://maps.google.com/?q=${selected.address}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
-                  {selected.address}
-                </p>
+                  <p className="text-center">
+                    {selected.address}
+                  </p>
+                </a>
 
                 <p
                   data-receipt-line
                   className="text-center text-[0.7rem] my-2 text-[#999]"
                 >
-                  - - - - - - - - - - - - - - - -
+                  - - - - - - - - - - - - - - - - -
                 </p>
 
                 <p
                   data-receipt-line
-                  className="text-[0.65rem] my-px leading-[1.4] text-[#555]"
+                  className="text-[0.7rem] my-px leading-[1.4] text-[#555]"
                 >
                   ORDER #{String(selected.id).padStart(4, "0")}
                 </p>
@@ -397,14 +402,14 @@ export default function Home() {
                   data-receipt-line
                   className="text-center text-[0.7rem] my-2 text-[#999]"
                 >
-                  - - - - - - - - - - - - - - - -
+                  - - - - - - - - - - - - - - - - -
                 </p>
 
                 {sections.map((sec) => (
                   <div key={sec.section} className="mb-2">
                     <p
                       data-receipt-line
-                      className="text-[0.6rem] mt-1 mb-0.5 text-[#888] tracking-[0.08em] uppercase"
+                      className="text-[0.7rem] mt-1 mb-0.5 text-[#888] tracking-[0.08em] uppercase"
                     >
                       {sec.section}
                     </p>
@@ -412,7 +417,7 @@ export default function Home() {
                       <p
                         key={item}
                         data-receipt-line
-                        className="text-[0.7rem] my-px leading-normal text-[#222] pl-1"
+                        className="text-[0.8rem] my-px leading-normal text-[#222] pl-1"
                       >
                         {item}
                       </p>
@@ -424,7 +429,7 @@ export default function Home() {
                   data-receipt-line
                   className="text-center text-[0.7rem] my-2 text-[#999]"
                 >
-                  - - - - - - - - - - - - - - - -
+                  - - - - - - - - - - - - - - - - -
                 </p>
 
                 <p
@@ -441,7 +446,7 @@ export default function Home() {
                 </p>
                 <p
                   data-receipt-line
-                  className="text-center text-[0.6rem] mt-2 text-[#aaa]"
+                  className="text-center text-[0.65rem] mt-2 text-[#aaa]"
                 >
                   * * * CUSTOMER COPY * * *
                 </p>
