@@ -282,7 +282,7 @@ export default function Home() {
   const sections = selected ? buildSections(selected) : [];
 
   return (
-    <main className="min-h-screen bg-[#f2ede6] flex flex-col items-center px-5 pt-8 pb-16 text-[#1a1520] font-[Trebuchet_MS,Segoe_UI,sans-serif] select-none">
+    <main className="min-h-screen bg-[#f2ede6] flex flex-col items-center px-5 pt-8 pb-16 text-[#1a1520]">
       {/* SVG sticker outline filter */}
       <svg width="0" height="0" style={{ position: "absolute" }}>
         <defs>
