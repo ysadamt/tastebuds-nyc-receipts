@@ -148,8 +148,8 @@ export default function Home() {
     if (postItRef.current) {
       tl.fromTo(
         postItRef.current,
-        { scale: 0, opacity: 0, rotate: -20 },
-        { scale: 1, opacity: 1, rotate: 3, duration: 0.4, ease: "back.out(2.5)" },
+        { scale: 0, opacity: 0, rotate: -10 },
+        { scale: 1, opacity: 1, rotate: 2, duration: 0.4, ease: "back.out(2.5)" },
         "-=0.1"
       );
     }
