@@ -556,7 +556,7 @@ export default function Home() {
                       className="flex items-center gap-1.5 text-[#92400e] hover:text-[#78350f] transition-colors duration-150 no-underline"
                     >
                       {/* Globe icon */}
-                      <TiktokLogoIcon size={18} weight="fill" />
+                      <span className="shrink-0"><TiktokLogoIcon size={18} weight="fill" /></span>
                       <span className="leading-tight truncate">tiktok</span>
                     </a>
                   )}
@@ -568,7 +568,7 @@ export default function Home() {
                       className="flex items-center gap-1.5 text-[#92400e] hover:text-[#78350f] transition-colors duration-150 no-underline"
                     >
                       {/* Globe icon */}
-                      <GlobeIcon size={18} weight="fill" />
+                      <span className="shrink-0"><GlobeIcon size={18} weight="fill" /></span>
                       <span className="leading-tight truncate">website</span>
                     </a>
                   )}
@@ -580,7 +580,7 @@ export default function Home() {
                       className="flex items-center gap-1.5 text-[#92400e] hover:text-[#78350f] transition-colors duration-150 no-underline"
                     >
                       {/* Instagram icon */}
-                      <InstagramLogoIcon size={18} weight="fill" />
+                      <span className="shrink-0"><InstagramLogoIcon size={18} weight="fill" /></span>
                       <span className="leading-tight truncate">@{selected.instagram}</span>
                     </a>
                   )}
