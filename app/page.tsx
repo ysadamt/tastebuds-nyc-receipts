@@ -265,8 +265,8 @@ export default function Home() {
 
     const globe = createGlobe(canvas, {
       devicePixelRatio: 2,
-      width: 1000,
-      height: 1000,
+      width: 800,
+      height: 800,
       phi: phiRef.current,
       theta: thetaRef.current,
       dark: 0,
@@ -375,13 +375,13 @@ export default function Home() {
       <div className="flex items-center justify-center flex-wrap w-full">
         <div
           ref={globeWrapperRef}
-          className="globeWrapper relative w-[750px] h-[750px] shrink-0 opacity-0"
+          className="globeWrapper relative w-[600px] h-[600px] shrink-0 opacity-0"
         >
           <canvas
             ref={canvasRef}
-            width={750}
-            height={750}
-            className="globeCanvas block w-[750px]! h-[750px]! rounded-full cursor-grab active:cursor-grabbing"
+            width={600}
+            height={600}
+            className="globeCanvas block w-[600px]! h-[600px]! rounded-full cursor-grab active:cursor-grabbing"
             onPointerDown={onPointerDown}
             onPointerMove={onPointerMove}
             onPointerUp={onPointerUp}
