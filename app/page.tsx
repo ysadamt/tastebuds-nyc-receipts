@@ -300,7 +300,7 @@ export default function Home() {
   const sections = selected ? buildSections(selected) : [];
 
   return (
-    <main className="min-h-screen bg-[#f2ede6] flex flex-col justify-between items-center px-5 pt-8 pb-16 text-[#1a1520]">
+    <main className="min-h-screen bg-[#f2ede6] flex flex-col justify-between items-center px-4 sm:px-5 pt-6 sm:pt-8 pb-10 sm:pb-16 text-[#1a1520]">
       {/* SVG sticker outline filter */}
       <svg width="0" height="0" style={{ position: "absolute" }}>
         <defs>
@@ -329,14 +329,14 @@ export default function Home() {
       <div className="flex flex-col gap-2">
         <h1
           ref={titleRef}
-          className={`text-center tracking-wide ${nanumPenScript.className} text-7xl mb-2 opacity-0`}
+          className={`text-center tracking-wide ${nanumPenScript.className} text-4xl sm:text-5xl lg:text-7xl mb-1 sm:mb-2 opacity-0`}
         >
           tastebuds nyc receipts
         </h1>
 
         <div ref={subtitleRef} className="flex flex-col items-center">
           <div
-            className={`text-[#8a7e78] text-lg tracking-[0.08em] flex items-center gap-1.5 mb-4 font-semibold ${zalandoSans.className}`}
+            className={`text-[#8a7e78] text-sm sm:text-lg tracking-[0.08em] flex items-center gap-1.5 mb-2 sm:mb-4 font-semibold ${zalandoSans.className}`}
           >
             <a href="https://www.tiktok.com/@tastebuds_nyc" target="_blank" rel="noopener noreferrer" className="flex gap-2 items-center hover:text-[#1a1520] transition-colors duration-200">
               <span>
@@ -364,7 +364,7 @@ export default function Home() {
             </a>
           </div>
 
-          <p className={`text-sm text-[#8a7e78] tracking-[0.08em] ${zalandoSans.className}`}>
+          <p className={`text-xs sm:text-sm text-[#8a7e78] tracking-[0.08em] ${zalandoSans.className}`}>
             spin the globe, click a flag, view the receipt!
           </p>
 
@@ -372,16 +372,16 @@ export default function Home() {
       </div>
 
 
-      <div className="flex items-center justify-center flex-wrap w-full">
+      <div className="flex flex-col lg:flex-row items-center justify-center w-full gap-4 lg:gap-0">
         <div
           ref={globeWrapperRef}
-          className="globeWrapper relative w-[600px] h-[600px] shrink-0 opacity-0"
+          className="globeWrapper relative w-[min(90vw,600px)] h-[min(90vw,600px)] shrink-0 opacity-0"
         >
           <canvas
             ref={canvasRef}
             width={600}
             height={600}
-            className="globeCanvas block w-[600px]! h-[600px]! rounded-full cursor-grab active:cursor-grabbing"
+            className="globeCanvas block w-full! h-full! rounded-full cursor-grab active:cursor-grabbing"
             onPointerDown={onPointerDown}
             onPointerMove={onPointerMove}
             onPointerUp={onPointerUp}
@@ -419,12 +419,12 @@ export default function Home() {
         </div>
 
         {/* Receipt */}
-        <div ref={receiptAreaRef} className="flex flex-col items-center drop-shadow-md">
+        <div ref={receiptAreaRef} className="flex flex-col items-center drop-shadow-md mb-12 sm:mb-4 lg:mb-0">
           {selected && (
             <div className="relative">
               <div
                 ref={receiptCardRef}
-                className="w-[300px] flex flex-col items-center"
+                className="w-[280px] sm:w-[300px] flex flex-col items-center"
                 style={{ clipPath: "inset(0 0 100% 0)", opacity: 0 }}
               >
                 {/* Paper body */}
@@ -458,7 +458,13 @@ export default function Home() {
 
                   <p
                     data-receipt-line
-                    className="text-center text-[0.7rem] my-2 text-[#999]"
+                    className="text-center text-[0.7rem] my-2 text-[#999] sm:hidden"
+                  >
+                    - - - - - - - - - - - - - - - -
+                  </p>
+                  <p
+                    data-receipt-line
+                    className="text-center text-[0.7rem] my-2 text-[#999] hidden sm:block"
                   >
                     - - - - - - - - - - - - - - - - -
                   </p>
@@ -472,7 +478,13 @@ export default function Home() {
 
                   <p
                     data-receipt-line
-                    className="text-center text-[0.7rem] my-2 text-[#999]"
+                    className="text-center text-[0.7rem] my-2 text-[#999] sm:hidden"
+                  >
+                    - - - - - - - - - - - - - - - -
+                  </p>
+                  <p
+                    data-receipt-line
+                    className="text-center text-[0.7rem] my-2 text-[#999] hidden sm:block"
                   >
                     - - - - - - - - - - - - - - - - -
                   </p>
@@ -499,7 +511,13 @@ export default function Home() {
 
                   <p
                     data-receipt-line
-                    className="text-center text-[0.7rem] my-2 text-[#999]"
+                    className="text-center text-[0.7rem] my-2 text-[#999] sm:hidden"
+                  >
+                    - - - - - - - - - - - - - - - -
+                  </p>
+                  <p
+                    data-receipt-line
+                    className="text-center text-[0.7rem] my-2 text-[#999] hidden sm:block"
                   >
                     - - - - - - - - - - - - - - - - -
                   </p>
@@ -541,7 +559,7 @@ export default function Home() {
               {/* Post-it note with links */}
               <div
                 ref={postItRef}
-                className={`absolute -bottom-[4%] left-1/2 -translate-x-1/2 w-[150px] bg-[#fef08a] px-3 py-2.5 shadow-[2px_2px_6px_rgba(0,0,0,0.15)] ${nanumPenScript.className}`}
+                className={`absolute -bottom-[4%] left-1/2 -translate-x-1/2 w-[140px] sm:w-[150px] bg-[#fef08a] px-2.5 sm:px-3 py-2 sm:py-2.5 shadow-[2px_2px_6px_rgba(0,0,0,0.15)] ${nanumPenScript.className}`}
                 style={{ opacity: 0, transformOrigin: "top left" }}
               >
                 {/* Tape strip */}
@@ -592,8 +610,8 @@ export default function Home() {
 
       </div>
       {/* Footer */}
-      <div className="flex flex-col items-center mt-10">
-        <p className={`text-sm text-[#8a7e78] tracking-[0.08em] ${zalandoSans.className}`}>
+      <div className="flex flex-col items-center mt-6 sm:mt-10 px-4">
+        <p className={`text-xs sm:text-sm text-center text-[#8a7e78] tracking-[0.08em] ${zalandoSans.className}`}>
           made with ❤️ by <a href="https://www.ysadamt.com" target="_blank" rel="noopener noreferrer" className="text-[#92400e] hover:text-[#78350f] transition-colors duration-150 no-underline">ysadamt</a>, code available on <a href="https://github.com/ysadamt/tastebuds-nyc-receipts" target="_blank" rel="noopener noreferrer" className="text-[#92400e] hover:text-[#78350f] transition-colors duration-150 no-underline">github</a>.
         </p>
       </div>

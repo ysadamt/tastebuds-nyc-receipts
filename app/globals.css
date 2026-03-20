@@ -1,9 +1,5 @@
 @import "tailwindcss";
 
-:root {
-  --printer-size: 300px;
-}
-
 body {
   margin: 0;
   padding: 0;
@@ -62,14 +58,9 @@ body {
 
 /* ── Responsive ─────────────────────────────────────────────── */
 
-@media (max-width: 600px) {
-  .globeWrapper {
-    width: 320px;
-    height: 320px;
-  }
-
-  .globeCanvas {
-    width: 320px !important;
-    height: 320px !important;
+@media (max-width: 640px) {
+  .globeSticker {
+    font-size: 1.4rem;
+    margin-bottom: 3px;
   }
 }
