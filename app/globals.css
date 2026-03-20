@@ -60,26 +60,9 @@ body {
   --sticker-rotation: -2deg;
 }
 
-/* ── Animations ─────────────────────────────────────────────── */
-
-@keyframes blinkSignal {
-  0%,
-  80% {
-    background: #888;
-  }
-  81%,
-  100% {
-    background: #22cc44;
-  }
-}
-
 /* ── Responsive ─────────────────────────────────────────────── */
 
 @media (max-width: 600px) {
-  :root {
-    --printer-size: 260px;
-  }
-
   .globeWrapper {
     width: 320px;
     height: 320px;
