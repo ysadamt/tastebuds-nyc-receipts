@@ -270,7 +270,7 @@ export default function Home() {
       phi: phiRef.current,
       theta: thetaRef.current,
       dark: 0,
-      diffuse: 1.5,
+      diffuse: 1,
       mapSamples: 20000,
       mapBrightness: 1,
       mapBaseBrightness: 0.05,
