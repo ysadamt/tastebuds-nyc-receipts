@@ -271,7 +271,7 @@ export default function Home() {
       theta: thetaRef.current,
       dark: 0,
       diffuse: 1.5,
-      mapSamples: 16000,
+      mapSamples: 20000,
       mapBrightness: 1,
       mapBaseBrightness: 0.05,
       baseColor: [1, 1, 1],
