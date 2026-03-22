@@ -334,7 +334,7 @@ export default function Home() {
           tastebuds nyc receipts
         </h1>
 
-        <div ref={subtitleRef} className="flex flex-col items-center">
+        <div ref={subtitleRef} className="flex flex-col items-center mb-2 sm:mb-4">
           <div
             className={`text-[#8a7e78] text-sm sm:text-lg tracking-[0.08em] flex items-center gap-1.5 mb-2 sm:mb-4 font-semibold ${zalandoSans.className}`}
           >
@@ -439,7 +439,7 @@ export default function Home() {
                   </p>
                   <p
                     data-receipt-line
-                    className="text-center my-1.5 text-sm leading-[1.4] text-[#555]"
+                    className="text-center my-1 text-sm leading-[1.4] text-[#555]"
                   >
                     {getFlagEmoji(selected.country_code)}{" "}
                     {selected.country.toUpperCase()}
@@ -485,13 +485,13 @@ export default function Home() {
 
                   <p
                     data-receipt-line
-                    className="text-center text-[0.7rem] my-2 text-[#999] sm:hidden"
+                    className="text-center text-[0.7rem] my-1 text-[#999] sm:hidden"
                   >
                     - - - - - - - - - - - - - - - -
                   </p>
                   <p
                     data-receipt-line
-                    className="text-center text-[0.7rem] my-2 text-[#999] hidden sm:block"
+                    className="text-center text-[0.7rem] my-1 text-[#999] hidden sm:block"
                   >
                     - - - - - - - - - - - - - - - - -
                   </p>
@@ -518,13 +518,13 @@ export default function Home() {
 
                   <p
                     data-receipt-line
-                    className="text-center text-[0.7rem] my-2 text-[#999] sm:hidden"
+                    className="text-center text-[0.7rem] my-1 text-[#999] sm:hidden"
                   >
                     - - - - - - - - - - - - - - - -
                   </p>
                   <p
                     data-receipt-line
-                    className="text-center text-[0.7rem] my-2 text-[#999] hidden sm:block"
+                    className="text-center text-[0.7rem] my-1 text-[#999] hidden sm:block"
                   >
                     - - - - - - - - - - - - - - - - -
                   </p>
@@ -534,12 +534,6 @@ export default function Home() {
                     className="text-center text-[0.8rem] my-px leading-[1.6] text-[#555]"
                   >
                     THANK YOU FOR DINING WITH US!
-                  </p>
-                  <p
-                    data-receipt-line
-                    className="text-center text-[0.7rem] my-px leading-[1.4] text-[#888]"
-                  >
-                    tastebuds_nyc
                   </p>
                   <p
                     data-receipt-line
