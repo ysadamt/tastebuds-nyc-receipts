@@ -416,7 +416,7 @@ export default function Home() {
             </a>
           </div>
 
-          <p className={`text-xs sm:text-sm text-center text-[#8a7e78] tracking-[0.08em] ${zalandoSans.className}`}>
+          <p className={`text-xs sm:text-sm text-center text-[#8a7e78] tracking-[0.08em] ${zalandoSans.className} md:w-3/4`}>
             following tall guy and hat guy through their journey around the world with receipts, all in nyc.
           </p>
 
