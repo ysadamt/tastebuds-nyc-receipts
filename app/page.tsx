@@ -448,7 +448,7 @@ export default function Home() {
           {restaurantsData.map((r) => (
             <div
               key={r.id}
-              className="globeSticker"
+              className={`globeSticker${selected?.id === r.id ? " selected" : ""}`}
               style={
                 {
                   positionAnchor: `--cobe-${r.id}`,
