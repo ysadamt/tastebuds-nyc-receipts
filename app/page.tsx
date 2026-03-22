@@ -67,6 +67,11 @@ export default function Home() {
   const lastXRef = useRef(0);
   const lastYRef = useRef(0);
 
+  // Globe auto-focus refs
+  const targetPhiRef = useRef<number | null>(null);
+  const targetThetaRef = useRef<number | null>(null);
+  const focusedRef = useRef(false);
+
   // Refs for GSAP targets
   const titleRef = useRef<HTMLHeadingElement>(null);
   const subtitleRef = useRef<HTMLParagraphElement>(null);
@@ -155,11 +160,34 @@ export default function Home() {
     }
   }, []);
 
+  const focusGlobeOn = useCallback((r: Restaurant) => {
+    const coords = COORDS[r.country_code];
+    if (!coords) return;
+    const [lat, lng] = coords;
+
+    // Convert lat/lng to COBE phi/theta
+    const destTheta = lat * (Math.PI / 180);
+    let destPhi = -(Math.PI / 2) - lng * (Math.PI / 180);
+
+    // Normalise to shortest arc
+    const TWO_PI = 2 * Math.PI;
+    let delta = destPhi - phiRef.current;
+    delta = ((delta % TWO_PI) + TWO_PI + Math.PI) % TWO_PI - Math.PI;
+    destPhi = phiRef.current + delta;
+
+    targetPhiRef.current = destPhi;
+    targetThetaRef.current = destTheta;
+    focusedRef.current = false; // will become true once we arrive
+  }, []);
+
   const handleStickerClick = useCallback(
     (r: Restaurant) => {
       if (animatingRef.current) return;
       if (selected?.id === r.id) return;
       animatingRef.current = true;
+
+      // Start globe rotation toward this country
+      focusGlobeOn(r);
 
       // If a receipt is already showing, animate it out first
       if (selected && receiptCardRef.current) {
@@ -213,12 +241,15 @@ export default function Home() {
         });
       }
     },
-    [selected, animateReceiptIn]
+    [selected, animateReceiptIn, focusGlobeOn]
   );
 
   const onPointerDown = useCallback(
     (e: React.PointerEvent<HTMLCanvasElement>) => {
       isDraggingRef.current = true;
+      // Cancel any in-progress auto-rotation on drag
+      targetPhiRef.current = null;
+      targetThetaRef.current = null;
       lastXRef.current = e.clientX;
       lastYRef.current = e.clientY;
       e.currentTarget.setPointerCapture(e.pointerId);
@@ -282,10 +313,31 @@ export default function Home() {
     });
 
     let rafId: number;
+    const LERP_FACTOR = 0.06;
+    const EPSILON = 0.001;
+
     function frame() {
-      if (!isDraggingRef.current) {
+      // Auto-rotate toward target if one is set
+      if (targetPhiRef.current !== null && targetThetaRef.current !== null) {
+        const dPhi = targetPhiRef.current - phiRef.current;
+        const dTheta = targetThetaRef.current - thetaRef.current;
+
+        if (Math.abs(dPhi) < EPSILON && Math.abs(dTheta) < EPSILON) {
+          // Arrived — snap and stop
+          phiRef.current = targetPhiRef.current;
+          thetaRef.current = targetThetaRef.current;
+          targetPhiRef.current = null;
+          targetThetaRef.current = null;
+          focusedRef.current = true;
+        } else {
+          phiRef.current += dPhi * LERP_FACTOR;
+          thetaRef.current += dTheta * LERP_FACTOR;
+        }
+      } else if (!isDraggingRef.current && !focusedRef.current) {
+        // Idle spin — only when not dragging and not focused on a restaurant
         phiRef.current += 0.001;
       }
+
       globe.update({ phi: phiRef.current, theta: thetaRef.current });
       rafId = requestAnimationFrame(frame);
     }
