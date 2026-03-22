@@ -416,8 +416,8 @@ export default function Home() {
             </a>
           </div>
 
-          <p className={`text-xs sm:text-sm text-[#8a7e78] tracking-[0.08em] ${zalandoSans.className}`}>
-            spin the globe, click a flag, view the receipt!
+          <p className={`text-xs sm:text-sm text-center text-[#8a7e78] tracking-[0.08em] ${zalandoSans.className}`}>
+            following tall guy and hat guy through their journey around the world with receipts, all in nyc.
           </p>
 
         </div>
