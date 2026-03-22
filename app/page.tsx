@@ -4,11 +4,11 @@ import createGlobe from "cobe";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { fakeReceipt } from "./utils/fonts";
 import restaurantsData from "../data/restaurants.json";
-import { Nanum_Pen_Script, Zalando_Sans } from "next/font/google";
+import { Gaegu, Zalando_Sans } from "next/font/google";
 import gsap from "gsap";
 import { GlobeIcon, InstagramLogoIcon, LinktreeLogoIcon, MapPinIcon, TiktokLogoIcon } from "@phosphor-icons/react";
 
-const nanumPenScript = Nanum_Pen_Script({ weight: "400" });
+const gaegu = Gaegu({ weight: ["300", "400", "700"] });
 const zalandoSans = Zalando_Sans({ weight: ["400", "500", "600", "700", "800", "900"] });
 
 type Restaurant = (typeof restaurantsData)[0];
@@ -381,7 +381,7 @@ export default function Home() {
       <div className="flex flex-col gap-2">
         <h1
           ref={titleRef}
-          className={`text-center tracking-wide ${nanumPenScript.className} text-4xl sm:text-5xl lg:text-7xl mb-1 sm:mb-2 opacity-0`}
+          className={`text-center tracking-tight ${gaegu.className} font-bold text-4xl sm:text-5xl lg:text-7xl mb-1 sm:mb-2 opacity-0`}
         >
           tastebuds nyc receipts
         </h1>
@@ -612,7 +612,7 @@ export default function Home() {
               {/* Post-it note with links */}
               <div
                 ref={postItRef}
-                className={`absolute -bottom-[4%] left-1/2 -translate-x-1/2 w-[140px] sm:w-[150px] bg-[#fef08a] px-2.5 sm:px-3 py-2 sm:py-2.5 shadow-[2px_2px_6px_rgba(0,0,0,0.15)] ${nanumPenScript.className}`}
+                className={`absolute -bottom-[4%] left-1/2 -translate-x-1/2 w-[140px] sm:w-[150px] bg-[#fef08a] px-2.5 sm:px-3 py-2 sm:py-2.5 shadow-[2px_2px_6px_rgba(0,0,0,0.15)] tracking-tight font-bold ${gaegu.className}`}
                 style={{ opacity: 0, transformOrigin: "top left" }}
               >
                 {/* Tape strip */}
