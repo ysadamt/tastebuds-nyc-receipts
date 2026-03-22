@@ -478,6 +478,13 @@ export default function Home() {
 
                   <p
                     data-receipt-line
+                    className="text-[0.7rem] my-px leading-[1.4] text-[#555]"
+                  >
+                    DATE: {selected.date}
+                  </p>
+
+                  <p
+                    data-receipt-line
                     className="text-center text-[0.7rem] my-2 text-[#999] sm:hidden"
                   >
                     - - - - - - - - - - - - - - - -
