@@ -6,7 +6,7 @@ import { fakeReceipt } from "./utils/fonts";
 import restaurantsData from "../data/restaurants.json";
 import { Gaegu, Zalando_Sans } from "next/font/google";
 import gsap from "gsap";
-import { GlobeIcon, InstagramLogoIcon, LinktreeLogoIcon, MapPinIcon, TiktokLogoIcon } from "@phosphor-icons/react";
+import { GlobeIcon, InstagramLogoIcon, LinktreeLogoIcon, MapPinIcon, ShoppingCartIcon, TiktokLogoIcon } from "@phosphor-icons/react";
 
 const gaegu = Gaegu({ weight: ["300", "400", "700"] });
 const zalandoSans = Zalando_Sans({ weight: ["400", "500", "600", "700", "800", "900"] });
@@ -408,11 +408,11 @@ export default function Home() {
             <p>
               ·
             </p>
-            <a href="https://pinnit.io/map/tastebuds-nyc" target="_blank" rel="noopener noreferrer" className="flex gap-2 items-center hover:text-[#1a1520] transition-colors duration-200">
+            <a href="https://tastebuds-nyc.com" target="_blank" rel="noopener noreferrer" className="flex gap-2 items-center hover:text-[#1a1520] transition-colors duration-200">
               <span>
-                <MapPinIcon size={18} weight="fill" />
+                <ShoppingCartIcon size={18} weight="fill" />
               </span>
-              pinnit
+              store
             </a>
           </div>
 
@@ -665,7 +665,7 @@ export default function Home() {
       {/* Footer */}
       <div className="flex flex-col items-center mt-6 sm:mt-10 px-4">
         <p className={`text-xs sm:text-sm text-center text-[#8a7e78] tracking-[0.08em] ${zalandoSans.className}`}>
-          made with ❤️ by <a href="https://www.ysadamt.com" target="_blank" rel="noopener noreferrer" className="text-[#92400e] hover:text-[#78350f] transition-colors duration-150 no-underline">ysadamt</a>, code available on <a href="https://github.com/ysadamt/tastebuds-nyc-receipts" target="_blank" rel="noopener noreferrer" className="text-[#92400e] hover:text-[#78350f] transition-colors duration-150 no-underline">github</a>.
+          made with ❤️ by <a href="https://www.ysadamt.com" target="_blank" rel="noopener noreferrer" className="text-[#92400e] hover:text-[#78350f] transition-colors duration-150 no-underline">adam teo</a>, code available on <a href="https://github.com/ysadamt/tastebuds-nyc-receipts" target="_blank" rel="noopener noreferrer" className="text-[#92400e] hover:text-[#78350f] transition-colors duration-150 no-underline">github</a>.
         </p>
       </div>
     </main >
