@@ -63,11 +63,7 @@
     "instagram": "arepascafe",
     "beverages": ["Polar Pilsner Beer", "Ponche Crema"],
     "appetizers": ["Empanadas de carne", "Yucca fries", "tequeno"],
-    "mains": [
-      "Hallaca",
-      "Pan de jamon",
-      "Arepa Pabellon"
-    ],
+    "mains": ["Hallaca", "Pan de jamon", "Arepa Pabellon"],
     "desserts": ["Cachapa"]
   },
   {
@@ -114,13 +110,7 @@
     "instagram": "theweekender_nyc",
     "beverages": ["Suja Butter Tea", "Rice wine"],
     "appetizers": [],
-    "mains": [
-      "Momo",
-      "Shamu Datsi",
-      "Sikam Paa",
-      "Shaka Datsi",
-      "Red rice"
-    ],
+    "mains": ["Momo", "Shamu Datsi", "Sikam Paa", "Shaka Datsi", "Red rice"],
     "desserts": []
   },
   {
@@ -274,5 +264,20 @@
     "appetizers": ["Cucumber salad", "Utopenec (sausage)"],
     "mains": ["Beef Goulash", "Svíčková", "Czech dumplings"],
     "desserts": ["Fruit dumplings"]
+  },
+  {
+    "id": 18,
+    "date": "2026-03-26",
+    "restaurant_name": "Wadadli",
+    "country": "Antigua and Barbuda",
+    "country_code": "AG",
+    "address": "419 Putnam Ave, Brooklyn, NY 11216",
+    "tiktok_video_id": "7621649198554942733",
+    "website": "https://wadadlijerk.com/",
+    "instagram": "wadadlijerk",
+    "beverages": ["Ting"],
+    "appetizers": [],
+    "mains": ["Oxtail", "Jerk Chicken", "Snapper + Mac & Cheese"],
+    "desserts": []
   }
 ]
