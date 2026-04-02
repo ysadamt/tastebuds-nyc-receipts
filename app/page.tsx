@@ -68,6 +68,11 @@ export default function Home() {
   const lastXRef = useRef(0);
   const lastYRef = useRef(0);
 
+  // Calculate visited countries
+  const visitedCountries = new Set(restaurantsData.map(r => r.country_code));
+  const visitedCount = visitedCountries.size;
+  const totalCountries = 195; // Approximate total countries in the world
+
   // Globe auto-focus refs
   const targetPhiRef = useRef<number | null>(null);
   const targetThetaRef = useRef<number | null>(null);
@@ -477,7 +482,7 @@ export default function Home() {
             <div className="relative">
               <div
                 ref={receiptCardRef}
-                className="w-[280px] sm:w-[300px] flex flex-col items-center"
+                className="w-70 sm:w-75 flex flex-col items-center"
                 style={{ clipPath: "inset(0 0 100% 0)", opacity: 0 }}
               >
                 {/* Paper body */}
@@ -613,7 +618,7 @@ export default function Home() {
               {/* Post-it note with links */}
               <div
                 ref={postItRef}
-                className={`absolute -bottom-[4%] left-1/2 -translate-x-1/2 w-[140px] sm:w-[150px] bg-[#fef08a] px-2.5 sm:px-3 py-2 sm:py-2.5 shadow-[2px_2px_6px_rgba(0,0,0,0.15)] tracking-tight font-bold ${gaegu.className}`}
+                className={`absolute -bottom-[4%] left-1/2 -translate-x-1/2 w-35 sm:w-37.5 bg-[#fef08a] px-2.5 sm:px-3 py-2 sm:py-2.5 shadow-[2px_2px_6px_rgba(0,0,0,0.15)] tracking-tight font-bold ${gaegu.className}`}
                 style={{ opacity: 0, transformOrigin: "top left" }}
               >
                 {/* Tape strip */}
@@ -665,9 +670,14 @@ export default function Home() {
       </div>
       {/* Footer */}
       <div className="flex flex-col items-center mt-6 sm:mt-10 px-4">
-        <p className={`text-xs sm:text-sm text-center text-[#8a7e78] tracking-[0.08em] ${zalandoSans.className}`}>
-          made with ❤️ by <a href="https://www.ysadamt.com" target="_blank" rel="noopener noreferrer" className="text-[#92400e] hover:text-[#78350f] transition-colors duration-150 no-underline">adam teo</a>, code available on <a href="https://github.com/ysadamt/tastebuds-nyc-receipts" target="_blank" rel="noopener noreferrer" className="text-[#92400e] hover:text-[#78350f] transition-colors duration-150 no-underline">github</a>.
-        </p>
+        <div className="flex flex-col items-center space-y-1">
+          <p className={`text-xs sm:text-sm text-center text-[#8a7e78] tracking-[0.08em] ${zalandoSans.className}`}>
+            {visitedCount}/{totalCountries} countries visited
+          </p>
+          <p className={`text-xs sm:text-sm text-center text-[#8a7e78] tracking-[0.08em] ${zalandoSans.className}`}>
+            made with ❤️ by <a href="https://www.ysadamt.com" target="_blank" rel="noopener noreferrer" className="text-[#92400e] hover:text-[#78350f] transition-colors duration-150 no-underline">adam teo</a>, code available on <a href="https://github.com/ysadamt/tastebuds-nyc-receipts" target="_blank" rel="noopener noreferrer" className="text-[#92400e] hover:text-[#78350f] transition-colors duration-150 no-underline">github</a>.
+          </p>
+        </div>
       </div>
     </main >
   );
