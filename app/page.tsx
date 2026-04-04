@@ -395,7 +395,7 @@ export default function Home() {
 
         <div ref={subtitleRef} className="flex flex-col items-center mb-2 sm:mb-4">
           <div
-            className={`text-[#8a7e78] text-sm sm:text-lg tracking-[0.08em] flex items-center gap-1.5 mb-2 sm:mb-4 font-semibold ${zalandoSans.className}`}
+            className={`text-[#5f5753] text-sm sm:text-lg tracking-[0.08em] flex items-center gap-1.5 mb-2 sm:mb-4 font-semibold ${zalandoSans.className}`}
           >
             <a href="https://www.tiktok.com/@tastebuds_nyc" target="_blank" rel="noopener noreferrer" className="flex gap-2 items-center hover:text-[#1a1520] transition-colors duration-200">
               <span>
@@ -423,7 +423,7 @@ export default function Home() {
             </a>
           </div>
 
-          <p className={`text-xs sm:text-sm text-center text-[#8a7e78] tracking-[0.08em] ${zalandoSans.className} md:w-3/4`}>
+          <p className={`text-xs sm:text-sm text-center text-[#5f5753] tracking-[0.08em] ${zalandoSans.className} md:w-3/4`}>
             following tall guy and hat guy through their journey around the world with receipts, all in nyc.
           </p>
 
@@ -631,7 +631,7 @@ export default function Home() {
                       href={`https://www.tiktok.com/@tastebuds_nyc/video/${selected.tiktok_video_id}`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-1.5 text-[#92400e] hover:text-[#78350f] transition-colors duration-150 no-underline"
+                      className="flex items-center gap-1.5 text-[#461f07] hover:text-[#321606] transition-colors duration-150 no-underline"
                     >
                       {/* Globe icon */}
                       <span className="shrink-0"><TiktokLogoIcon size={18} weight="fill" /></span>
@@ -643,7 +643,7 @@ export default function Home() {
                       href={selected.website}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-1.5 text-[#92400e] hover:text-[#78350f] transition-colors duration-150 no-underline"
+                      className="flex items-center gap-1.5 text-[#461f07] hover:text-[hsl(22,78%,11%)] transition-colors duration-150 no-underline"
                     >
                       {/* Globe icon */}
                       <span className="shrink-0"><GlobeIcon size={18} weight="fill" /></span>
@@ -655,7 +655,7 @@ export default function Home() {
                       href={`https://instagram.com/${selected.instagram}`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-1.5 text-[#92400e] hover:text-[#78350f] transition-colors duration-150 no-underline"
+                      className="flex items-center gap-1.5 text-[#461f07] hover:text-[#321606] transition-colors duration-150 no-underline"
                     >
                       {/* Instagram icon */}
                       <span className="shrink-0"><InstagramLogoIcon size={18} weight="fill" /></span>
@@ -672,11 +672,11 @@ export default function Home() {
       {/* Footer */}
       <div className="flex flex-col items-center mt-6 sm:mt-10 px-4">
         <div className="flex flex-col items-center space-y-1">
-          <p className={`text-xs sm:text-sm text-center text-[#8a7e78] tracking-[0.08em] ${zalandoSans.className}`}>
+          <p className={`text-xs sm:text-sm text-center text-[#5f5753] tracking-[0.08em] ${zalandoSans.className}`}>
             {visitedCount}/{totalCountries} countries visited
           </p>
-          <p className={`text-xs sm:text-sm text-center text-[#8a7e78] tracking-[0.08em] ${zalandoSans.className}`}>
-            made with ❤️ by <a href="https://www.ysadamt.com" target="_blank" rel="noopener noreferrer" className="text-[#92400e] hover:text-[#78350f] transition-colors duration-150 no-underline">adam teo</a>, code available on <a href="https://github.com/ysadamt/tastebuds-nyc-receipts" target="_blank" rel="noopener noreferrer" className="text-[#92400e] hover:text-[#78350f] transition-colors duration-150 no-underline">github</a>.
+          <p className={`text-xs sm:text-sm text-center text-[#5f5753] tracking-[0.08em] ${zalandoSans.className}`}>
+            made with ❤️ by <a href="https://www.ysadamt.com" target="_blank" rel="noopener noreferrer" className="text-[#461f07] hover:text-[#321606] transition-colors duration-150 no-underline font-semibold">adam teo</a>, code available on <a href="https://github.com/ysadamt/tastebuds-nyc-receipts" target="_blank" rel="noopener noreferrer" className="text-[#461f07] hover:text-[#321606] transition-colors duration-150 no-underline font-semibold">github</a>.
           </p>
         </div>
       </div>
