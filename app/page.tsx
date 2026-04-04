@@ -39,6 +39,7 @@ const COORDS: Record<string, [number, number]> = {
   HT: [19.0, -72.3],
   CZ: [49.8, 15.5],
   AG: [17.1, -61.8],
+  HN: [15.2, -86.2],
 };
 
 type ReceiptSection = { section: string; items: string[] };

@@ -279,5 +279,20 @@
     "appetizers": [],
     "mains": ["Oxtail", "Jerk Chicken", "Snapper + Mac & Cheese"],
     "desserts": []
+  },
+  {
+    "id": 19,
+    "date": "2026-04-02",
+    "restaurant_name": "Seis Vecinos",
+    "country": "Honduras",
+    "country_code": "HN",
+    "address": "640 Prospect Ave, Bronx, NY 10455",
+    "tiktok_video_id": "7624270296031202573",
+    "website": "https://www.seisvecinos.com/",
+    "instagram": "seisvecinos",
+    "beverages": [],
+    "appetizers": ["Baleada", "Chicharron", "Papusa"],
+    "mains": ["Canoas de Plátano", "Carne Asada", "Pollo Frito con Tajadas"],
+    "desserts": ["Flan"]
   }
 ]
