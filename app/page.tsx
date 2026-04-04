@@ -8,8 +8,8 @@ import { Gaegu, Zalando_Sans } from "next/font/google";
 import gsap from "gsap";
 import { GlobeIcon, InstagramLogoIcon, LinktreeLogoIcon, MapPinIcon, ShoppingCartIcon, TiktokLogoIcon } from "@phosphor-icons/react";
 
-const gaegu = Gaegu({ weight: ["300", "400", "700"] });
-const zalandoSans = Zalando_Sans({ weight: ["400", "500", "600", "700", "800", "900"] });
+const gaegu = Gaegu({ weight: ["700"] });
+const zalandoSans = Zalando_Sans();
 
 type Restaurant = (typeof restaurantsData)[0];
 
