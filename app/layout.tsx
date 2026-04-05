@@ -51,6 +51,7 @@ export default function RootLayout({
           name="twitter:description"
           content="receipts from restaurants all over the world, all in nyc."
         />
+        <script defer src="https://umami.ysadamt.com/script.js" data-website-id="002a2980-c558-4be9-92cd-4632348dc4ea"></script>
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
