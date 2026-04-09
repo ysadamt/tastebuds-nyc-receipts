@@ -294,5 +294,20 @@
     "appetizers": ["Baleada", "Chicharron", "Papusa"],
     "mains": ["Canoas de Plátano", "Carne Asada", "Pollo Frito con Tajadas"],
     "desserts": ["Flan"]
+  },
+  {
+    "id": 20,
+    "date": "2026-04-09",
+    "restaurant_name": "A-Pou's Taste",
+    "country": "Taiwan",
+    "country_code": "TW",
+    "address": "963 Grand St, Brooklyn, NY 11211",
+    "tiktok_video_id": "7626873033847885070",
+    "website": "https://www.apoustasteny.com/",
+    "instagram": "apoustastebk",
+    "beverages": [],
+    "appetizers": ["Pork potstickers"],
+    "mains": ["Beef Noodle Soup", "Taiwanese Braised Pork", "Basil Chicken"],
+    "desserts": ["Pumpkin Dumplings"]
   }
 ]
