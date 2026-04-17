@@ -309,5 +309,20 @@
     "appetizers": ["Pork potstickers"],
     "mains": ["Beef Noodle Soup", "Taiwanese Braised Pork", "Basil Chicken"],
     "desserts": ["Pumpkin Dumplings"]
+  },
+  {
+    "id": 21,
+    "date": "2026-04-16",
+    "restaurant_name": "Yemenat",
+    "country": "Yemen",
+    "country_code": "YE",
+    "address": "7721 5th Ave, Brooklyn, NY 11209",
+    "tiktok_video_id": "7629462153598225678",
+    "website": "https://www.yemenat.rest/",
+    "instagram": "yemenat_",
+    "beverages": [],
+    "appetizers": ["Shafoot", "Salata"],
+    "mains": ["Fahsa", "Lamb Haneeth", "Chicken Haneeth"],
+    "desserts": ["Bint al-Sahn", "Muhalabia"]
   }
 ]
