@@ -324,5 +324,20 @@
     "appetizers": ["Shafoot", "Salata"],
     "mains": ["Fahsa", "Lamb Haneeth", "Chicken Haneeth"],
     "desserts": ["Bint al-Sahn", "Muhalabia"]
+  },
+  {
+    "id": 22,
+    "date": "2026-04-23",
+    "restaurant_name": "Wok Wok Noodle House",
+    "country": "Malaysia",
+    "country_code": "MY",
+    "address": "11 Mott St, New York, NY 10013",
+    "tiktok_video_id": "7632072402314202381",
+    "website": "https://wokwoknyc.com/",
+    "instagram": "wokwokny",
+    "beverages": [],
+    "appetizers": ["Roti Canai", "Beef satay"],
+    "mains": ["Hokkien Char Mee", "Beef Rendang", "Curry Laksa"],
+    "desserts": []
   }
 ]
