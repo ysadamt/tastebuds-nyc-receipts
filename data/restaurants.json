@@ -339,5 +339,19 @@
     "appetizers": ["Roti Canai", "Beef satay"],
     "mains": ["Hokkien Char Mee", "Beef Rendang", "Curry Laksa"],
     "desserts": []
+  },
+  {
+    "id": 23,
+    "date": "2026-04-30",
+    "restaurant_name": "Mongolian Momo King",
+    "country": "Mongolia",
+    "country_code": "MN",
+    "address": "399 Park Ave, New York, NY 10022",
+    "tiktok_video_id": "7634643650567261453",
+    "instagram": "mongolian_momo_king",
+    "beverages": ["Mongolian butter tea"],
+    "appetizers": ["Beef Momo (Buuz)", "Khuushuur"],
+    "mains": ["Tsuivan", "Mongolian braised lamb burger", "Lamb broth soup"],
+    "desserts": []
   }
 ]
