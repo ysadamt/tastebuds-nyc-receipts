@@ -44,6 +44,7 @@ const COORDS: Record<string, [number, number]> = {
   YE: [15.0, 48.0],
   MY: [4.0, 114.0],
   MN: [46.8, 103.0],
+  RS: [44.0, 21.0],
 };
 
 type ReceiptSection = { section: string; items: string[] };

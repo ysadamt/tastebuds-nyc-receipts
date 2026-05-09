@@ -353,5 +353,20 @@
     "appetizers": ["Beef Momo (Buuz)", "Khuushuur"],
     "mains": ["Tsuivan", "Mongolian braised lamb burger", "Lamb broth soup"],
     "desserts": []
+  },
+  {
+    "id": 24,
+    "date": "2026-05-07",
+    "restaurant_name": "Kafana",
+    "country": "Serbia",
+    "country_code": "RS",
+    "address": "116 Loisaida Ave, New York, NY 10009",
+    "tiktok_video_id": "7637249366683569439",
+    "website": "https://kafananyc.com/",
+    "instagram": "kafananyc",
+    "beverages": ["Baša Vino (Serbian wine)", "Beer"],
+    "appetizers": ["Lepinja + Kajmak", "Sopska salad"],
+    "mains": ["Cevapi (grilled minced meat)", "Zeljanica (spinach pie)", "Karadjordjeva", "Meat platter"],
+    "desserts": ["Palacinke"]
   }
 ]
