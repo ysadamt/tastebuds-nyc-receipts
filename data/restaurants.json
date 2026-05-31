@@ -397,5 +397,20 @@
     "appetizers": ["Guyanese Moon Pie", "Lamb Curry Pastry", "Cheese Roll"],
     "mains": ["Jerk Chicken Lo Mein", "Pepperpot"],
     "desserts": []
+  },
+  {
+    "id": 27,
+    "date": "2026-05-28",
+    "restaurant_name": "Stolovaya",
+    "country": "Russia",
+    "country_code": "RU",
+    "address": "New York, NY",
+    "tiktok_video_id": null,
+    "website": "https://www.tastebudsnyc.com/",
+    "instagram": "tastebuds_nyc",
+    "beverages": [],
+    "appetizers": ["Olivier Salad", "Borsch"],
+    "mains": ["Chicken Kiev", "Beef Stroganoff", "Blini with Beef", "Golubtsy", "Pickled grapes"],
+    "desserts": ["Varenyky with cherries"]
   }
 ]
