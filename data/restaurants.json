@@ -383,5 +383,19 @@
     "appetizers": [],
     "mains": ["Poutine", "Buffalo Wings"],
     "desserts": ["Nanaimo Bars"]
+  },
+  {
+    "id": 26,
+    "date": "2026-05-21",
+    "restaurant_name": "Sybil's Bakery & Restaurant",
+    "country": "Guyana",
+    "country_code": "GY",
+    "address": "159-24 Hillside Ave., Jamaica, NY 11432",
+    "tiktok_video_id": "7642429703919258893",
+    "instagram": "sybilshillside",
+    "beverages": ["Ginger beer"],
+    "appetizers": ["Guyanese Moon Pie", "Lamb Curry Pastry", "Cheese Roll"],
+    "mains": ["Jerk Chicken Lo Mein", "Pepperpot"],
+    "desserts": []
   }
 ]
