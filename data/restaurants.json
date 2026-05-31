@@ -368,5 +368,20 @@
     "appetizers": ["Lepinja + Kajmak", "Sopska salad"],
     "mains": ["Cevapi (grilled minced meat)", "Zeljanica (spinach pie)", "Karadjordjeva", "Meat platter"],
     "desserts": ["Palacinke"]
+  },
+  {
+    "id": 25,
+    "date": "2026-05-14",
+    "restaurant_name": "The Canuck",
+    "country": "Canada",
+    "country_code": "CA",
+    "address": "202 9th Ave, New York, NY 10011",
+    "tiktok_video_id": "7639853153143541006",
+    "website": "https://www.thecanucknyc.com/",
+    "instagram": "thecanucknyc",
+    "beverages": ["Moosehead Lager", "Molson Canadian", "Bloody Caesar", "Labatt Blue", "Blanche de Chambly"],
+    "appetizers": [],
+    "mains": ["Poutine", "Buffalo Wings"],
+    "desserts": ["Nanaimo Bars"]
   }
 ]
