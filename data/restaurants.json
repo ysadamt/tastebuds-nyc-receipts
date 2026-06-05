@@ -410,5 +410,20 @@
     "appetizers": ["Olivier Salad", "Borsch"],
     "mains": ["Chicken Kiev", "Beef Stroganoff", "Blini with Beef", "Golubtsy", "Pickled grapes"],
     "desserts": ["Varenyky with cherries"]
+  },
+  {
+    "id": 28,
+    "date": "2026-06-04",
+    "restaurant_name": "The Kasbah Cafe",
+    "country": "Algeria",
+    "country_code": "DZ",
+    "address": "39-19 Greenpoint Ave, Sunnyside, NY 11104",
+    "tiktok_video_id": "7647623404597628173",
+    "website": "https://thekasbahcafe.com/",
+    "instagram": "kasbahcafeny",
+    "beverages": ["Tea"],
+    "appetizers": ["Shorba Frik", "Bourek"],
+    "mains": ["Lamb Couscous", "Rechta"],
+    "desserts": []
   }
 ]
