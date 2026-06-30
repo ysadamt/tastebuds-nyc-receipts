@@ -49,8 +49,8 @@ const COORDS: Record<string, [number, number]> = {
   GY: [5.0, -59.0],
   RU: [60.0, 100.0],
   DZ: [28.0, 3.0],
-  IN: [20.6, 78.9],
   CO: [4.0, -72.0],
+  BD: [24.0, 90.0],
 };
 
 type ReceiptSection = { section: string; items: string[] };

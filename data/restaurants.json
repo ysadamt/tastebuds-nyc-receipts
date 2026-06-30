@@ -428,21 +428,6 @@
   },
   {
     "id": 29,
-    "date": "2026-06-11",
-    "restaurant_name": "Semma",
-    "country": "India",
-    "country_code": "IN",
-    "address": "60 Greenwich Ave, New York, NY 10011",
-    "tiktok_video_id": "7650222366122986766",
-    "website": "https://www.semma.nyc/",
-    "instagram": "semmanyc",
-    "beverages": [],
-    "appetizers": ["Roadside Kalan"],
-    "mains": ["Ghee Lamb Chops", "Valiya Chemmeen Mollee", "Annasi Pazham Scallops"],
-    "desserts": ["Mambalam dessert"]
-  },
-  {
-    "id": 30,
     "date": "2026-06-18",
     "restaurant_name": "Sabor de Colombia",
     "country": "Colombia",
@@ -454,6 +439,21 @@
     "beverages": ["Aguapanela Casera", "Colombian coffee"],
     "appetizers": ["Tostones Mixtos", "Chicharron", "Mini Empanadas"],
     "mains": ["Hamburguesa Campesina", "Red Snapper", "Arepa", "Picada"],
+    "desserts": []
+  },
+  {
+    "id": 30,
+    "date": "2026-06-25",
+    "restaurant_name": "TONG_NYC",
+    "country": "Bangladesh",
+    "country_code": "BD",
+    "address": "73-01 37th Ave, Jackson Heights, NY 11372",
+    "tiktok_video_id": "7655430381457444126",
+    "website": "https://www.facebook.com/Bangladeshistreetfoods#",
+    "instagram": "tong_nyc",
+    "beverages": [],
+    "appetizers": [],
+    "mains": ["Fuchka", "Bhelpuri", "Jhalmuri", "Chatpoti"],
     "desserts": []
   }
 ]
