@@ -440,5 +440,20 @@
     "appetizers": ["Roadside Kalan"],
     "mains": ["Ghee Lamb Chops", "Valiya Chemmeen Mollee", "Annasi Pazham Scallops"],
     "desserts": ["Mambalam dessert"]
+  },
+  {
+    "id": 30,
+    "date": "2026-06-18",
+    "restaurant_name": "Sabor de Colombia",
+    "country": "Colombia",
+    "country_code": "CO",
+    "address": "7026 3rd Ave, Brooklyn, NY 11209",
+    "tiktok_video_id": "7652812190600154398",
+    "website": "https://colombianrestaurantbrooklyn.com/",
+    "instagram": "sabordecolombiany",
+    "beverages": ["Aguapanela Casera", "Colombian coffee"],
+    "appetizers": ["Tostones Mixtos", "Chicharron", "Mini Empanadas"],
+    "mains": ["Hamburguesa Campesina", "Red Snapper", "Arepa", "Picada"],
+    "desserts": []
   }
 ]
