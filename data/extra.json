@@ -1,15 +1,31 @@
-{
-    "id": 29,
-    "date": "2026-06-11",
-    "restaurant_name": "Semma",
-    "country": "India",
-    "country_code": "IN",
-    "address": "60 Greenwich Ave, New York, NY 10011",
-    "tiktok_video_id": "7650222366122986766",
-    "website": "https://www.semma.nyc/",
-    "instagram": "semmanyc",
-    "beverages": [],
-    "appetizers": ["Roadside Kalan"],
-    "mains": ["Ghee Lamb Chops", "Valiya Chemmeen Mollee", "Annasi Pazham Scallops"],
-    "desserts": ["Mambalam dessert"]
-}
+[
+    {
+        "id": 1,
+        "date": "2026-06-11",
+        "restaurant_name": "Semma",
+        "country": "India",
+        "country_code": "IN",
+        "address": "60 Greenwich Ave, New York, NY 10011",
+        "tiktok_video_id": "7650222366122986766",
+        "website": "https://www.semma.nyc/",
+        "instagram": "semmanyc",
+        "beverages": [],
+        "appetizers": ["Roadside Kalan"],
+        "mains": ["Ghee Lamb Chops", "Valiya Chemmeen Mollee", "Annasi Pazham Scallops"],
+        "desserts": ["Mambalam dessert"]
+    },
+    {
+        "id": 2,
+        "date": "2026-06-25",
+        "restaurant_name": "Puran Dhaka NYC",
+        "country": "Bangladesh",
+        "country_code": "BD",
+        "address": "73-12 37th Ave, Jackson Heights, NY 11372",
+        "tiktok_video_id": "7655430381457444126",
+        "instagram": "purandhakanyc",
+        "beverages": ["Mango Lassi"],
+        "appetizers": [],
+        "mains": ["Beef Kalhi"],
+        "desserts": []
+    }
+]
