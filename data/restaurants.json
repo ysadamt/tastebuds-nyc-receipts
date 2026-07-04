@@ -455,5 +455,20 @@
     "appetizers": [],
     "mains": ["Fuchka", "Bhelpuri", "Jhalmuri", "Chatpoti"],
     "desserts": []
+  },
+  {
+    "id": 31,
+    "date": "2026-07-02",
+    "restaurant_name": "Adom African Cuisine",
+    "country": "Ghana",
+    "country_code": "GH",
+    "address": "613 E Tremont Ave, Bronx, NY 10457",
+    "tiktok_video_id": "7658022341733010702",
+    "website": "https://www.adomafricancuisineny.com/",
+    "instagram": "adomafricancuisine",
+    "beverages": ["Sorrel"],
+    "appetizers": [],
+    "mains": ["Fufu", "Waakye", "Jollof Rice", "Fried yams and turkey"],
+    "desserts": []
   }
 ]
