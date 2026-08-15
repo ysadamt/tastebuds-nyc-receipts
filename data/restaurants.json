@@ -530,5 +530,35 @@
     "appetizers": ["Miondo"],
     "mains": ["Poulet DG", "Poisson Braisé", "Ndolé (bitter leaf)"],
     "desserts": ["Mango cake"]
+  },
+  {
+    "id": 36,
+    "date": "2026-08-06",
+    "restaurant_name": "Ador Restaurant",
+    "country": "Moldova",
+    "country_code": "MD",
+    "address": "3145 Brighton 4th St, Brooklyn, NY 11235",
+    "tiktok_video_id": "7670995998440803597",
+    "website": "https://www.adornyc.com/",
+    "instagram": "adornyc",
+    "beverages": ["White wine"],
+    "appetizers": ["Duck Salad", "Zeama", "Plăcintă"],
+    "mains": ["Mititei", "Mămăligă", "Lepure Cu Smântână"],
+    "desserts": ["Cusma (Cherry Crepe Cake)"]
+  },
+  {
+    "id": 37,
+    "date": "2026-08-13",
+    "restaurant_name": "Dinastia Ecuadorian Food 2",
+    "country": "Ecuador",
+    "country_code": "EC",
+    "address": "394 Bedford Ave, Brooklyn, NY 11249",
+    "tiktok_video_id": "7673629185956465933",
+    "website": "https://ecuadorianrestaurant.com/",
+    "instagram": "",
+    "beverages": ["Morocho (Oat Drink)"],
+    "appetizers": ["Encebollado (Tuna Soup)", "Beef Patties"],
+    "mains": ["Ecuadorian Plate", "Bandera"],
+    "desserts": ["Watermelon"]
   }
 ]

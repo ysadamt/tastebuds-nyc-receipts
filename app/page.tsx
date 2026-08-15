@@ -56,6 +56,8 @@ const COORDS: Record<string, [number, number]> = {
   ER: [15.0, 39.0],
   CY: [35.0, 33.0],
   CM: [6.0, 12.0],
+  MD: [47.0, 29.0],
+  EC: [-2.0, -77.5],
 };
 
 type ReceiptSection = { section: string; items: string[] };
