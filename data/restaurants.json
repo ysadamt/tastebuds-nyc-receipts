@@ -560,5 +560,35 @@
     "appetizers": ["Encebollado (Tuna Soup)", "Beef Patties"],
     "mains": ["Ecuadorian Plate", "Bandera"],
     "desserts": ["Watermelon"]
+  },
+  {
+    "id": 38,
+    "date": "2026-08-20",
+    "restaurant_name": "Tournesol",
+    "country": "France",
+    "country_code": "FR",
+    "address": "50-12 Vernon Blvd, Long Island City, NY 11101",
+    "tiktok_video_id": "7676187405296078094",
+    "website": "https://www.tournesolnyc.com/",
+    "instagram": "tournesolnyc",
+    "beverages": ["Plum Liquor"],
+    "appetizers": [],
+    "mains": ["Escargot with Tarragon", "Foie Gras", "Baked Skate", "Duck Breast"],
+    "desserts": []
+  },
+  {
+    "id": 39,
+    "date": "2026-08-27",
+    "restaurant_name": "Burmese Bites",
+    "country": "Myanmar",
+    "country_code": "MM",
+    "address": "38-01 31st Ave, Astoria, NY 11103",
+    "tiktok_video_id": "7678811308589960461",
+    "website": "",
+    "instagram": "burmesebites",
+    "beverages": ["Tea"],
+    "appetizers": ["Tea Leaf Salad", "Burmese Potato Roll"],
+    "mains": ["Ah Meh Tha Hin (Beef Curry)", "Nga Hin (Fish Curry)", "Mohinga (Catfish Soup)"],
+    "desserts": []
   }
 ]
