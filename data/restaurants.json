@@ -590,5 +590,20 @@
     "appetizers": ["Tea Leaf Salad", "Burmese Potato Roll"],
     "mains": ["Ah Meh Tha Hin (Beef Curry)", "Nga Hin (Fish Curry)", "Mohinga (Catfish Soup)"],
     "desserts": []
+  },
+  {
+    "id": 40,
+    "date": "2026-09-03",
+    "restaurant_name": "Azara Kitchen",
+    "country": "Burkina Faso",
+    "country_code": "BF",
+    "address": "348 Lenox Ave, New York, NY 10027",
+    "tiktok_video_id": "7681386051704720653",
+    "website": "https://azarakitchen.com/",
+    "instagram": "azarakitchen",
+    "beverages": ["Baobab Juice"],
+    "appetizers": ["Fataya", "Fufu w/ Okra Stew"],
+    "mains": ["Grilled Branzino", "Jollof Rice", "Maffe Lamb"],
+    "desserts": []
   }
 ]
