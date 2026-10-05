@@ -605,5 +605,20 @@
     "appetizers": ["Fataya", "Fufu w/ Okra Stew"],
     "mains": ["Grilled Branzino", "Jollof Rice", "Maffe Lamb"],
     "desserts": []
+  },
+  {
+    "id": 41,
+    "date": "2026-09-10",
+    "restaurant_name": "Sarajevo Grill",
+    "country": "Bosnia and Herzegovina",
+    "country_code": "BA",
+    "address": "3718 34th Ave, Long Island City, NY 11101",
+    "tiktok_video_id": "7683988817015082253",
+    "website": "https://sarajevogrill.com/",
+    "instagram": "sarajevogrill",
+    "beverages": ["Cockta"],
+    "appetizers": ["Tursija", "Cevapi"],
+    "mains": ["Spinach pie", "Beef Stuffed Cabbage"],
+    "desserts": ["Hurmashica"]
   }
 ]
