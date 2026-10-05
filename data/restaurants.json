@@ -620,5 +620,20 @@
     "appetizers": ["Tursija", "Cevapi"],
     "mains": ["Spinach pie", "Beef Stuffed Cabbage"],
     "desserts": ["Hurmashica"]
+  },
+  {
+    "id": 42,
+    "date": "2026-09-17",
+    "restaurant_name": "Zi",
+    "country": "Zimbabwe",
+    "country_code": "ZW",
+    "address": "Zi's Apartment",
+    "tiktok_video_id": "7686582825352531213",
+    "website": "",
+    "instagram": "zi.from.zimbabwe",
+    "beverages": ["Kumusha", "Baobab Milkshake"],
+    "appetizers": ["Amacimbi (Mopane Worms)"],
+    "mains": ["Gango", "Beef liver", "Beef Kidney"],
+    "desserts": []
   }
 ]
