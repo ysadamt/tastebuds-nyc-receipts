@@ -665,5 +665,20 @@
     "appetizers": [],
     "mains": ["Red Beans with Pom", "Noodles with Gizzard and Liver", "Roti with Masala Curry"],
     "desserts": ["Cassava Cake"]
+  },
+  {
+    "id": 45,
+    "date": "2026-10-09",
+    "restaurant_name": "Farida",
+    "country": "Kazakhstan",
+    "country_code": "KZ",
+    "address": "32 Cedar St, New York, NY 10005",
+    "tiktok_video_id": "7694388510014459167",
+    "website": "https://www.farida.us/",
+    "instagram": "farida_restaurants",
+    "beverages": ["Zhigulevskoye Beer"],
+    "appetizers": ["Samsa"],
+    "mains": ["Plov", "Beshbarmak", "Kebab"],
+    "desserts": ["Mom's Honey Cake"]
   }
 ]
