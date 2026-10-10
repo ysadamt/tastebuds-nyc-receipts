@@ -650,5 +650,20 @@
     "appetizers": ["Crispy rye bread", "Fish soup"],
     "mains": ["Potato waffle w/ Shrimp", "Meatballs w/ Lingonberry"],
     "desserts": ["Ahlgrens Bilar"]
+  },
+  {
+    "id": 44,
+    "date": "2026-10-01",
+    "restaurant_name": "PNK Surinamese Cuisine & Majnoon Cafe",
+    "country": "Suriname",
+    "country_code": "SR",
+    "address": "128-12 Liberty Ave, South Richmond Hill, NY 11419",
+    "tiktok_video_id": "7691796189401861390",
+    "website": "",
+    "instagram": "majnoonny",
+    "beverages": [],
+    "appetizers": [],
+    "mains": ["Red Beans with Pom", "Noodles with Gizzard and Liver", "Roti with Masala Curry"],
+    "desserts": ["Cassava Cake"]
   }
 ]
